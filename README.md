@@ -2,6 +2,8 @@
 
 SAMM est une progressive web app visant à aider l'utilisateur à réduire ses addictions.
 
+Tester l'application sur https://luc.catzguy.com ;)
+
 Description de l'application :
 
 Les catégories d'addictions traitées dans un premier temps sont l'alcool et le tabac, la version actuelle permet simplement de créer les comptes utilisateurs, de suivre leurs addictions en leur initialisant un compteur.
