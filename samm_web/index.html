@@ -1,0 +1,276 @@
+<!doctype html>
+<html>
+<head>
+	<title>SAMM</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=10" />
+	<meta charset="utf-8" />
+	<link rel="manifest" href="manifest.json">
+	<link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Roboto" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/jquery-ui.structure.css" />
+	<link rel="stylesheet" type="text/css" href="css/samm.css" />
+	<script type="text/javascript" src="js/jquery-3.4.0.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
+</head>
+<body>
+
+	<!-- ADD TAKEN VIEW -->
+	<section class="add_taken_view view">
+			<header></header>
+			<section class="add_taken_form">
+				<input type="hidden"  name="taken.addiction" id="add_taken_addiction" />
+				<input type="hidden" name="taken.price" id="add_taken_price" value="0" />
+				<input type="hidden" name="taken.addiction_name" id="add_taken_addiction_name" />
+				<div class="price_content">0 €</div>
+				<div class="form_field">
+					<div class="slider"></div>
+				</div>
+				<div class="form_field">
+					<button class="btn">Enregistrer</button>
+				</div>
+				<div class="form_field">
+					<button class="btn_cancel">Annuler</button>
+				</div>
+			</section>			
+		</section>
+
+	<!-- MAIN VIEW -->
+	<section class="main_view view">
+		<header>
+			<div class="container_user">
+				<div class="data_username"></div>
+				<div class="secondary_userdata">
+					<div class="list_user_addiction"></div>
+					<div class="data_userscore"></div>
+					<span class="score_icon"></span>
+				</div>
+			</div>
+			<button class="menu_btn"></button>
+		</header>
+
+		<menu class="main_menu">
+			<button data-view="home_view" class="menu_item">Général</button> 
+			<button data-view="taken_view" class="menu_item">Rechutes</button>
+			<!--
+			<button data-view="success_view" class="menu_item">Succés</button>
+			<button data-view="lose_view" class="menu_item">Echec</button>
+			-->
+			<button data-view="update_password_view" class="menu_item">Modifier le mot de passe</button>
+			<button class="logout menu_item">Se déconnecter</button>
+		</menu>
+
+		<!-- HOME -->
+		<section class="home_view inapp_view">
+			<p>Glisser-déposer en cas de rechute</p>
+			<div class="taken_addiction_container"></div>
+			<div class="droppable_container"></div>
+		</section>
+
+		<!-- TAKEN VIEW -->
+		<section class="taken_view inapp_view">
+			<section class="taken_list"></section>
+		</section>
+
+		<!-- UPDATE PASSWORD -->
+		<section class="update_password_view inapp_view">
+			<p class="server_error"></p>
+			<section class="update_password_form">
+				<div class="form_field">
+					<label class="form_field_label" for="update_password_oldpassword">Mot de passe actuel</label>
+					<input class="form_field_input" type="password" name="update_password_oldpassword" id="update_password_oldpassword" />
+					<span class="form_field_error"></span>
+				</div>
+				<div class="form_field">
+					<label class="form_field_label" for="update_password_password">Nouveau mot de passe</label>
+					<input class="form_field_input" type="password" name="update_password_password" id="update_password_password" />
+					<span class="form_field_error"></span>
+				</div>
+				<div class="form_field">
+					<label class="form_field_label" for="update_password_confirm_password">Confirmation de mot de passe</label>
+					<input class="form_field_input" type="password" name="update_password_confirm_password" id="update_password_confirm_password" />
+					<span class="form_field_error"></span>
+				</div>
+				<div class="form_field">
+					<button class="btn disabled">Modifer</button>
+				</div>
+			</section>
+		</section>
+
+	</section>
+
+	<!-- LOGIN VIEW -->
+	
+	<section class="login_view view">
+		
+		<header>
+			<div class="logo"></div>
+			<div class="name">SAMM</div>
+		</header>
+
+		<section class="login_form">
+			<p class="server_error"></p>
+			<div class="form_field">
+				<label class="form_field_label" for="login_email">Email</label>
+				<input maxlength="40" class="form_field_input" type="email" name="login_email" id="login_email" />
+				<span class="form_field_error"></span>
+			</div>
+
+			<div class="form_field">
+				<label class="form_field_label" for="login_password">Mot de passe</label>
+				<input class="form_field_input" type="password" name="password" id="login_password" />
+				<span class="form_field_error"></span>
+			</div>
+			
+			<div class="container_forgot_password">
+				<button class="forgot_password a_btn" view-data="forgot_password_view" >Mot de passe oublié ?</button>
+			</div>
+			
+			<div class="form_field">
+				<button class="btn disabled">Se connecter</button>
+			</div>
+			
+			<div class="container_sign_up">
+				<p>Vous n'avez pas encore de compte ?</p>
+				<button view-data="sign_up_view" class="a_btn">S'inscrire</button>
+			</div>
+
+		</section>
+
+	</section>
+
+	<!-- USER CREATION VIEW -->
+
+	<section class="sign_up_view view">
+		<header>
+			<div class="logo"></div>
+			<h1>Création de compte</h1>
+		</header>
+		<section class="sign_up_form">
+			<p class="server_error"></p>
+			<div class="form_field">
+				<label class="form_field_label" for="sign_up_email">Email</label>
+				<input maxlength="40" class="form_field_input" type="email" name="sign_up_email" id="sign_up_email" />
+				<span class="form_field_error"></span>
+			</div>
+			<div class="form_field">
+				<label class="form_field_label" for="sign_up_username">Nom d'utilisateur</label>
+				<input maxlength="20" class="form_field_input" type="text" name="sign_up_username" id="sign_up_username" />
+				<span class="form_field_error"></span>
+			</div>
+			<div class="form_field">
+				<label class="form_field_label" for="sign_up_password">Mot de passe</label>
+				<input class="form_field_input" type="password" name="sign_up_password" id="sign_up_password" />
+				<span class="form_field_error"></span>
+			</div>
+			<div class="form_field">
+				<label class="form_field_label" for="sign_up_confirm_password">Confirmation de mot de passe</label>
+				<input class="form_field_input" type="password" name="sign_up_confirm_password" id="sign_up_confirm_password" />
+				<span class="form_field_error"></span>
+			</div>
+			<div class="form_field">
+				<button class="btn disabled">Créer mon compte</button>
+			</div>
+			<div class="container_backtologin">
+				<button class="a_btn" view-data="login_view">S'identifier</button>
+			</div>
+		</section>
+	</section>
+
+	<!-- CHOOSE ADDICTION VIEW -->
+	<section class="choose_addiction_view view">
+		<header>
+			<div class="logo"></div>
+			<h1>Sélection des addictions</h1>
+		</header>
+		<section class="choose_addiction_form">
+			<p class="server_error"></p>
+			<p>Veuillez choisir la ou les catégories sur lesquelles vous souhaitez être suivi.</p>
+			
+			<div class="container_addiction">
+				<button data-id="08C67D0F-8424-44F0-B8E4-921077CDF7A5" class="addiction_btn tobacco disabled"></button>
+				<div class="addiction_information">
+					<div class="addiction_name">Tabac</div>
+					<div class="addiction_description">
+						<p>Suivre et réduire votre consommation du tabac</p>
+					</div>
+				</div>				
+			</div>
+
+			<div class="container_addiction">
+				<button data-id="42160412-882F-46E8-B699-657AE1F106C8" class="addiction_btn alcohol disabled"></button>
+				<div class="addiction_information">
+					<div class="addiction_name">Alcool</div>
+					<div class="addiction_description">
+						<p>Suivre et réduire votre consommation d'alcool</p>
+					</div>
+				</div>				
+			</div>
+
+			<div class="form_field">
+				<button class="btn disabled">Sélectionner</button>
+			</div>
+
+		</section>
+
+	</section>
+
+	<!-- FORGOT PASSWORD VIEW -->
+	
+	<section class="forgot_password_view view">
+		<header>
+			<div class="logo"></div>
+			<h1>Mot de passe oublié ?</h1>
+			<p class="instruction">Veuillez saisir votre adresse email.<br/>Un nouveau mot de passe vous sera envoyé sur votre boîte mail.</p>
+		</header>
+		<section class="forgot_password_form">
+			<div class="form_field">
+				<label class="form_field_label" for="forgot_password_email">Email</label>
+				<input maxlength="40" class="form_field_input" type="email" name="forgot_password_email" id="forgot_password_email" />
+				<span class="form_field_error"></span>
+			</div>
+
+			<div class="form_field">
+				<button class="btn disabled">Envoyer</button>
+			</div>
+
+			<div class="container_backtologin">
+				<button class="a_btn" view-data="login_view">S'identifier</button>
+			</div>
+
+		</section>
+	</section>
+	
+
+	<!-- POPIN -->
+	<div class="overlay">
+		<div class="popin">
+			<div class="container_popin">
+				<header class="header_popin"></header>
+				<p class="message_popin"></p>
+				<button class="btn_popin">OK</button>
+			</div>			
+		</div>
+	</div>
+
+	<script type="text/javascript" src="js/samm.js"></script>
+	<script type="text/javascript">
+		// This is the "Offline page" service worker
+
+		// Add this below content to your HTML page, or add the js file to your page at the very top to register service worker
+
+		// Check compatibility for the browser we're running this in
+		if ("serviceWorker" in navigator) {
+  			if (navigator.serviceWorker.controller) {
+    			console.log("[PWA Builder] active service worker found, no need to register");
+  			} else {
+    			// Register the service worker
+    			navigator.serviceWorker.register("pwabuilder-sw.js", {
+    				scope: "./"
+    			}).then(function (reg) {
+    				console.log("[PWA Builder] Service worker has been registered for scope: " + reg.scope);
+      			});
+  			}
+		}
+	</script>
+</body>
+</html>
