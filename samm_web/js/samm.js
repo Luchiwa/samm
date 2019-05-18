@@ -103,14 +103,6 @@ function setTimer(date) {
 	return stringHour+":"+stringMinute+":"+stringSecond;
 }
 
-function validateForm(form) {
-	if (form.find($("input")).length === form.find($("input.valid")).length) {
-		form.find("button").removeClass("disabled");
-	} else {
-		form.find("button").addClass("disabled");
-	}
-}
-
 function popin(message, callback) {
 	$(".overlay .popin button.btn_popin").unbind("click");
 	$(".overlay .popin .message_popin").text(message);
@@ -435,6 +427,22 @@ function bindMainViewHeader() {
 }
 
 function bindMainViewMenu() {
+	/*
+	$(".main_view .main_menu").bind({
+		"swipeleft" : function () {
+			console.log("ok");
+		}
+	});
+	*/
+	/*
+	$(".main_view .main_menu").draggable({
+		"revert" : true,
+		"axis": "x",
+		"drag" : function (event) {
+			console.log(event);
+		}
+	});
+	*/
 	$(".main_view .main_menu .menu_item").bind({
 		"click" : function () {
 			//logout
@@ -572,8 +580,14 @@ function bindAddTakenForm() {
 
 function bindHomeView() {	
 	$(".home_view .taken_btn").draggable({
-		containment: ".home_view",
-		revert: true
+		"containment" : ".home_view",
+		"revert" : true,
+		"start" : function () {
+			$(".home_view .droppable_container").addClass("ondrag");
+		},
+		"stop" : function () {
+			$(".home_view .droppable_container").removeClass("ondrag");
+		}
 	});
 	$(".home_view .droppable_container").droppable({
 		accept : ".taken_btn",

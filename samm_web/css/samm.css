@@ -354,6 +354,11 @@ header {
     background-size: 15vh;
     background-position: center center;
     animation: backgroundPulsate 6s ease-in-out infinite;
+    transition: background-color 0.2s ease;
+}
+
+.main_view .home_view .droppable_container.ondrag {
+	background-color: #4491FF;
 }
 
 /* MAIN VIEW - TAKEN */
