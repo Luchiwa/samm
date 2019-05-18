@@ -1,5 +1,5 @@
-var apiBaseUrl = "https://luc.catzguy.com/api/";
-//var apiBaseUrl = "http://localhost/samm/samm_api/";
+//var apiBaseUrl = "https://luc.catzguy.com/api/";
+var apiBaseUrl = "http://localhost/samm/samm_api/";
 
 function getUserAddictions(callback) {
 	$.ajax({
@@ -83,7 +83,7 @@ function bindLinkButton() {
 
 function setTimer(date) {
 	var nbSecondNow = parseInt(new Date().getTime() / 1000);
-	var nbSecondReset = parseInt(new Date(date).getTime() / 1000);
+	var nbSecondReset = parseInt(new Date(date + " UTC").getTime() / 1000);
 	var allSecondSinceReset = nbSecondNow - nbSecondReset;
 	var hourSinceReset = Math.floor(allSecondSinceReset / 3600);
 	var minuteSinceReset = Math.floor((allSecondSinceReset % 3600)/60);
@@ -296,8 +296,8 @@ function bindSignUpForm() {
 	});
 	$(".sign_up_form #sign_up_username").bind({
 		"blur" : function () {
-			if (isTooShortString($(this).val(), 6)) {
-				showInputError($(this), "Le nom d'utilisateur doit contenir au moins 6 caractères");
+			if (isTooShortString($(this).val(), 4)) {
+				showInputError($(this), "Le nom d'utilisateur doit contenir au moins 4 caractères");
 			} else {
 				validInput($(this));
 				validateForm($(".sign_up_form"));
