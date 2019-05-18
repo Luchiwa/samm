@@ -55,6 +55,7 @@ h1 {
 
 button {
 	border: none;
+	outline: none;
 }
 
 button:focus {
