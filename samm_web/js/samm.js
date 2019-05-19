@@ -1,6 +1,3 @@
-//var apiBaseUrl = "https://luc.catzguy.com/api/";
-var apiBaseUrl = "http://localhost/samm/samm_api/";
-
 function getUserAddictions(callback) {
 	$.ajax({
 		url : apiBaseUrl + "user_addiction/get_by_user.php?user=" + getLocalStorage("user.id"),
