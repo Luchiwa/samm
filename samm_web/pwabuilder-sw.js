@@ -1,7 +1,8 @@
 var cacheName = 'samm-page';
 var filesToCache = [
   '/',
-  '/index.html'
+  '/index.html',
+  '/add_taken.html'
 ];
 
 self.addEventListener('install', function(e) {

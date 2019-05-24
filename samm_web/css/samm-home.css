@@ -95,6 +95,10 @@
     transition: background-color 0.2s ease;
 }
 
+.home_view .droppable_container.scored {
+	background-color: #22CC00; 
+}
+
 .home_view .droppable_container.ondrag {
 	background-color: #4491FF;
 }

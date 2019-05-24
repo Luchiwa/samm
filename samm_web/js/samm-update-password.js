@@ -51,7 +51,7 @@ function bindUpdatePasswordForm() {
 							$(".update_password_form p.server_error").text("Serveur indisponible").fadeIn();
 						}
 					}
-				})
+				});
 			}
 		}
 	});

@@ -7,7 +7,10 @@ var htmlHomeView = '<section class="home_view view"><p>Glisser-déposer en cas d
 </section>
 */
 
-function setTimer(date) {
+var timerInterval;
+var scoreInterval;
+
+function setAddictionTimer(date) {
 	var nbSecondNow = parseInt(new Date().getTime() / 1000);
 	var nbSecondReset = parseInt(new Date(date + " UTC").getTime() / 1000);
 	var allSecondSinceReset = nbSecondNow - nbSecondReset;
@@ -17,13 +20,21 @@ function setTimer(date) {
 	return numberToString(hourSinceReset) + ":" + numberToString(minuteSinceReset) + ":" + numberToString(secondSinceReset);
 }
 
-function setDataHome() {
+function setScoredTimer() {
+	scoreInterval = setInterval(function () {
+		$(".home_view .droppable_container").addClass("scored");
+	}, 25000);
+}
+
+function setAddictionHome() {
 	var user_addictions = JSON.parse(getLocalStorage("user_addiction")).user_addictions;
+
 	if (user_addictions.length < 2) {
 		$(".home_view .taken_addiction_container").addClass("one");
 	} else {
 		$(".home_view .taken_addiction_container").addClass("two");
 	}
+
 	user_addictions.forEach(function(user_addiction) {
 		var draggableAddiction = $("<div>", {
 			"class" : "taken_btn "+user_addiction.addiction_name,
@@ -33,9 +44,11 @@ function setDataHome() {
 		var resetTimeAddiction = $("<div>", {
 			"class" : "timer_addiction"
 		});
-		draggableAddiction.append(resetTimeAddiction.text(setTimer(getLocalStorage(user_addiction.addiction+":reset_date"))));
-		setInterval(function () {
-			resetTimeAddiction.text(setTimer(getLocalStorage(user_addiction.addiction+":reset_date")));
+	
+		draggableAddiction.append(resetTimeAddiction.text(setAddictionTimer(getLocalStorage(user_addiction.addiction+":reset_date"))));
+	
+		timerInterval = setInterval(function () {
+			resetTimeAddiction.text(setAddictionTimer(getLocalStorage(user_addiction.addiction+":reset_date")));
 		}, 1000);
 		$(".home_view .taken_addiction_container").append(draggableAddiction);
 	});	
@@ -63,7 +76,33 @@ function bindHomeView() {
 			localStorage.setItem("taken:addiction_id", ui.draggable.attr("data-id"));
 			window.location.href="add_taken.html";			
 		}
-	});	
+	});
+	$(".home_view .droppable_container").bind({
+		"click" : function () {
+			if ($(this).hasClass("scored")) {
+				//TO DO : Update score user
+				$.ajax({
+					url : apiBaseUrl + "user/update_score.php",
+					method : "POST",
+					contentType: "application/json",
+					dataType: "json",
+					data : JSON.stringify({
+						"id" : getLocalStorage("user.id"),
+						"score" : parseInt(getLocalStorage("user.score")) + 1
+					}),
+					complete : function (jqXHR) {
+						if (jqXHR.status === 200) {
+							localStorage.setItem("user.score", jqXHR.responseJSON.score);
+							$("body header .data_userscore").text(getLocalStorage("user.score"));											
+							$(".home_view .droppable_container").removeClass("scored");
+							clearInterval(scoreInterval);
+							setScoredTimer();
+						}
+					}
+				});
+			}
+		}
+	});
 }
 
 function initHomeView(callback) {
@@ -72,11 +111,12 @@ function initHomeView(callback) {
 	}
 	if (!getLocalStorage("user_addiction")) {
 		getUserAddiction(function () {
-			setDataHome();
+			setAddictionHome();
 			bindHomeView();
 		});
 	} else {
-		setDataHome();
+		setAddictionHome();
 		bindHomeView();
 	}
+	setScoredTimer();
 }
