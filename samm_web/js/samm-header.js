@@ -28,7 +28,6 @@ function getUserAddiction(callback) {
 }
 
 function setDataHeader() {
-	console.log("setDataHeader");
 	var user_addictions = JSON.parse(getLocalStorage("user_addiction")).user_addictions;
 	user_addictions.forEach(function(user_addiction) {
 		var spanAddiction = $("<span>", {

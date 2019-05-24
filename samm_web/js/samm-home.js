@@ -14,19 +14,7 @@ function setTimer(date) {
 	var hourSinceReset = Math.floor(allSecondSinceReset / 3600);
 	var minuteSinceReset = Math.floor((allSecondSinceReset % 3600)/60);
 	var secondSinceReset = (allSecondSinceReset % 3600) % 60;
-	var stringHour = hourSinceReset;
-	var stringMinute = minuteSinceReset;
-	var stringSecond = secondSinceReset;
-	if (hourSinceReset <= 9) {
-		stringHour = "0" + hourSinceReset;
-	}
-	if (minuteSinceReset <= 9) {
-		stringMinute = "0" + minuteSinceReset;
-	}
-	if (secondSinceReset <= 9) {
-		stringSecond = "0" + secondSinceReset;
-	}
-	return stringHour+":"+stringMinute+":"+stringSecond;
+	return numberToString(hourSinceReset) + ":" + numberToString(minuteSinceReset) + ":" + numberToString(secondSinceReset);
 }
 
 function setDataHome() {

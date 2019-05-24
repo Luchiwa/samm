@@ -39,3 +39,10 @@ function validInput(input) {
 	input.next().fadeOut();
 	input.addClass("valid");
 }
+
+function numberToString(number) {
+	if (number <= 9) {
+		return "0" + number;
+	}
+	return number;
+}

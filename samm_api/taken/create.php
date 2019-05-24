@@ -28,7 +28,7 @@ if (!empty($data->user) && !empty($data->addiction)) {
 
 	$user_addiction->user = $data->user;
 	$user_addiction->addiction = $data->addiction;
-	$user_addiction->reset_date = date("Y-m-d H:i:s");
+	$user_addiction->reset_date = $taken->creation_date;
 
 	if ($taken->create() && $user_addiction->updateResetDate()) {
 		http_response_code(201);

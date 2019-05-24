@@ -6,7 +6,6 @@ $(document).ready(function () {
 		});
 
 	} else {
-		console.log("SAMM SESSION EXIST ??");
 		initMenu();
 		initHeader();
 		initHomeView(function () {

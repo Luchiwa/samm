@@ -23,9 +23,7 @@ function bindAddTakenForm() {
 				complete : function (jqXHR) {
 					if (jqXHR.status === 201) {
 						var taken = jqXHR.responseJSON;
-						var resetDate = new Date();
-						var resetStringDate = "";
-						localStorage.setItem(getLocalStorage("taken:addiction_id") + ":reset_date", new Date());
+						localStorage.setItem(getLocalStorage("taken:addiction_id") + ":reset_date", taken.creation_date);
 						popin("C'est dommage, essayer de faire mieux.", function () {
 							window.location.href="index.html";
 						});
@@ -43,14 +41,6 @@ function bindAddTakenForm() {
 			window.location.href="index.html";						
 		}
 	});
-}
-
-function getStringDate(date) {
-	var year = date.getFullYear();
-	var month = date.getMonth()+1;
-	var day = date.getDate();
-	var hour = date.getHours();
-	var minute = date.getMinutes();
 }
 
 $(document).ready(function () {
