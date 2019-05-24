@@ -32,7 +32,7 @@ function isTooShortString(string, length) {
 
 function showInputError(input, message) {
 	input.next().text(message).fadeIn();
-	input.removeClass("")	
+	input.removeClass("valid")	
 }
 
 function validInput(input) {

@@ -1,0 +1,62 @@
+.overlay {
+	position: fixed;
+	z-index: 2;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0,0,0,0.5);
+	display: none;
+}
+
+.overlay .popin {
+	position: fixed;
+	z-index: 3;
+	width: 70vw;
+	/*height: 40vh;*/
+	background-color: #fff;
+	top: 30vh;
+	left: 15vw;
+	display: none;
+}
+
+.overlay .popin .container_popin {
+	position: relative;
+	float: left;
+	width: 100%;
+}
+
+.overlay .popin .container_popin header {
+	position: absolute;
+	height: 20vh;
+	width: 20vh;
+	border-radius: 10vh;
+	background-color: #fff;
+	top: -10vh;
+    left: calc(35vw - 10vh);
+    background-image: url("../images/racoon_logo.svg");
+    background-position: center center;
+    background-size: 15vh;
+    background-repeat: no-repeat;
+}
+
+.overlay .popin .container_popin p.message_popin {
+	float: left;
+	width: calc(100% - 10vw);
+	margin-left: 5vw;
+	margin-right: 5vw;
+	margin-top: 10vh;
+    text-align: center;
+}
+
+.overlay .popin .container_popin button.btn_popin {
+	float: left;
+	width: calc(100% - 10vw);
+	margin-left: 5vw;
+	margin-right: 5vw;
+	font-size: 5vw;
+	height: 10vh;
+	text-transform: uppercase;
+    background-color: #11e611;
+    color: #fff;
+    margin-top: 5vh;
+    margin-bottom: 1vh;
+}

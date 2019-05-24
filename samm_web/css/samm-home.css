@@ -1,0 +1,100 @@
+@keyframes float {
+	0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(-20px);
+	}
+	100% {
+		transform: translatey(0px);
+	}
+}
+
+@keyframes backgroundPulsate {
+	0% {
+		background-size: 15vh;
+	}
+	50% {
+		background-size: 20vh;
+	}
+	100% {
+		background-size: 15vh;
+	}
+}
+
+.home_view {
+	float: left;
+	width: 90vw;
+	margin-left: 5vw;
+	margin-right: 5vw;
+}
+
+.home_view p {
+	text-align: center;
+}
+
+.home_view .taken_addiction_container {
+	float: left;
+	margin-top: 10vh;
+	margin-bottom: 10vh;
+}
+
+.home_view .taken_addiction_container.one {
+	width: 15vh;
+	margin-left: calc(45vw - 7.5vh);
+	margin-right: calc(45vw - 7.5vh);
+}
+
+.home_view .taken_addiction_container.two {
+	width: 35vh;
+	margin-left: calc(45vw - 17.5vh);
+	margin-right: calc(45vw - 17.5vh);
+}
+
+.home_view .taken_addiction_container .taken_btn {
+	position: relative;
+	height: 15vh;
+	width: 15vh;
+	border-radius: 7.5vh;
+	background-repeat: no-repeat;
+	background-size: 10vh;
+	background-position: center center;
+	animation: float 6s ease-in-out infinite;
+}
+
+.home_view .taken_addiction_container .taken_btn .timer_addiction {
+	position: absolute;
+	width: 15vh;
+	text-align: center;
+	height: 5vh;
+	line-height: 5vh;
+	bottom: -5vh;
+	color: rgba(0,0,0,0.6);
+}
+
+.home_view .taken_addiction_container .tobacco {
+	float: left;
+}
+
+.home_view .taken_addiction_container .alcohol {
+	float: right;
+}
+
+.home_view .droppable_container {
+	float: left;
+    height: 40vh;
+    width: 40vh;
+    margin-left: calc(50% - 20vh);
+    background-color: #FF0000;
+    border-radius: 20vh;
+    background-image: url("../images/score_icon.svg");
+    background-repeat: no-repeat;
+    background-size: 15vh;
+    background-position: center center;
+    animation: backgroundPulsate 6s ease-in-out infinite;
+    transition: background-color 0.2s ease;
+}
+
+.home_view .droppable_container.ondrag {
+	background-color: #4491FF;
+}

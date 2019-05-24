@@ -1,0 +1,54 @@
+.login_view header {
+	float: left;
+	width: 90vw;
+	height: 20vh;
+	margin-left: 5vw;
+	margin-right: 5vw;
+	margin-top: 5vh;
+	background-color: #fff;
+}
+
+.login_view header .logo {
+	float: left;
+	width: 30vw;
+	height: 30vw;
+	background-image: url(../images/racoon_logo.svg);
+	background-size: 26vw auto;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.login_view header .name {
+	float: left;
+	width: 60vw;
+	height: 30vw;
+	line-height: 30vw;
+	font-size: 18vw;
+	font-family: 'Permanent Marker', cursive;
+	color: #4491FF;
+	text-align: left;
+}
+
+.login_view .login_form {
+	float: left;
+	width: 90vw;
+	margin-left: 5vw;
+	margin-right: 5vw;
+}
+
+.login_view .login_form .container_forgot_password {
+	float: left;
+	width: 100%;
+	height: 5vh;
+}
+
+.login_view .login_form .container_forgot_password a {
+	float: right;	
+}
+
+.login_view .login_form .container_sign_up {
+	float: left;
+	height: 10vh;
+	width: 100%;
+	text-align: center;
+}

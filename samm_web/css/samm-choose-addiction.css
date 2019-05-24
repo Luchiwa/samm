@@ -1,0 +1,66 @@
+.choose_addiction_view header {
+	float: left;
+	width: 100vw;
+	height: 20vh;
+}
+
+.choose_addiction_view header .logo {
+	height: 10vh;
+	width: 10vh;
+	margin: 1vh auto;
+	background-image: url("../images/racoon_logo_white.svg");
+	background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.choose_addiction_view .choose_addiction_form {
+	float: left;
+	width: 90vw;
+	margin-left: 5vw;
+	margin-right: 5vw;
+}
+
+.choose_addiction_view .choose_addiction_form p {
+	text-align: center;
+}
+
+.choose_addiction_view .choose_addiction_form .container_addiction {
+	float: left;
+	width: 100%;
+	height: 16vh;
+	margin-top: 4vh;
+	margin-bottom: 4vh;
+}
+
+.choose_addiction_view .choose_addiction_form .container_addiction button.addiction_btn {
+	float: left;
+	height: 16vh;
+	width: 16vh;
+	border-radius: 8vh;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 10vh;
+	transition: all 0.2s ease;
+}
+
+.choose_addiction_view .choose_addiction_form .container_addiction button.disabled {
+	background-color: rgba(0,0,0,0.1) !important;
+}
+
+.choose_addiction_view .choose_addiction_form .container_addiction .addiction_information {
+	float: left;
+	margin-left: 5vw;
+	margin-top: 2vh;
+	width: calc(85vw - 16vh);
+}
+
+.choose_addiction_view .choose_addiction_form .container_addiction .addiction_information .addiction_name {
+    color: rgba(0,0,0,0.7);
+    font-size: 6vw;
+}
+
+.choose_addiction_view .choose_addiction_form .container_addiction .addiction_information .addiction_description p {
+	font-size: 4vw;
+	text-align: left;
+	color: rgba(0,0,0,0.6);
+}

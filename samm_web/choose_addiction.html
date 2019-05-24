@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+	<title>SAMM</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=10" />
+	<meta charset="utf-8" />
+	<link rel="manifest" href="manifest.json">
+	<link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Roboto" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/jquery-ui.structure.css" />
+	<link rel="stylesheet" type="text/css" href="css/lucky-form.css" />
+	<link rel="stylesheet" type="text/css" href="css/samm.css" />
+	<link rel="stylesheet" type="text/css" href="css/samm-choose-addiction.css" />
+	<script type="text/javascript" src="js/jquery-3.4.0.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
+	<script type="text/javascript" src="js/config.js"></script>
+	<script type="text/javascript" src="js/lucky-form.js"></script>
+	<script type="text/javascript" src="js/lucky-storage.js"></script>
+</head>
+<body>
+	<section class="choose_addiction_view view">
+		<header>
+			<div class="logo"></div>
+			<h1>Sélection des addictions</h1>
+		</header>
+		<section class="choose_addiction_form">
+			<p class="server_error"></p>
+			<p>Veuillez choisir la ou les catégories sur lesquelles vous souhaitez être suivi.</p>			
+			<div class="container_addiction">
+				<button data-id="08C67D0F-8424-44F0-B8E4-921077CDF7A5" class="addiction_btn tobacco disabled"></button>
+				<div class="addiction_information">
+					<div class="addiction_name">Tabac</div>
+					<div class="addiction_description">
+						<p>Suivre et réduire votre consommation du tabac</p>
+					</div>
+				</div>				
+			</div>
+			<div class="container_addiction">
+				<button data-id="42160412-882F-46E8-B699-657AE1F106C8" class="addiction_btn alcohol disabled"></button>
+				<div class="addiction_information">
+					<div class="addiction_name">Alcool</div>
+					<div class="addiction_description">
+						<p>Suivre et réduire votre consommation d'alcool</p>
+					</div>
+				</div>				
+			</div>
+			<div class="form_field">
+				<button class="btn disabled">Sélectionner</button>
+			</div>
+		</section>
+	</section>
+	<script type="text/javascript" src="js/samm-choose-addiction.js"></script>
+</body>
+</html>

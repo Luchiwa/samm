@@ -1,0 +1,29 @@
+.add_taken_view {
+	float: left;
+	width: 100%;
+}
+
+.add_taken_view header {
+	float: left;
+	height: 30vh;
+	width: 100%;
+	background-size: 15vh;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.add_taken_form .price_content {
+	float: left;
+	height: 25vh;
+	width: 100%;
+	text-align: center;
+	line-height: 25vh;
+	font-size: 18vh;
+}
+
+.add_taken_view .add_taken_form {
+	float: left;
+	width: 90vw;
+	margin-left: 5vw;
+	margin-right: 5vw;
+}
