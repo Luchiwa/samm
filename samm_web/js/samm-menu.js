@@ -10,7 +10,7 @@ var htmlMenuView = '<menu class="main_menu"><a href="index.html" class="menu_ite
 function logOut() {
 	clearLocalStorage();
 	clearCookie("samm_session");
-	window.location.href="index.hmlt";
+	window.location.href="index.html";
 }
 
 function bindMainViewMenu() {
@@ -30,9 +30,3 @@ function initMenu() {
 		bindMainViewMenu();
 	}
 }
-
-$(document).ready(function () {
-	if (window.location.href.indexOf("index.html") === -1) {
-		initMenu();
-	}
-});

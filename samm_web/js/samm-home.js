@@ -82,6 +82,13 @@ function initHomeView(callback) {
 	if ($("body .home_view").length === 0) {
 		$("body").append(htmlHomeView);
 	}
-	setDataHome();
-	bindHomeView();
+	if (!getLocalStorage("user_addiction")) {
+		getUserAddiction(function () {
+			setDataHome();
+			bindHomeView();
+		});
+	} else {
+		setDataHome();
+		bindHomeView();
+	}
 }

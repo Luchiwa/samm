@@ -1,18 +1,19 @@
 <?php
 
 class Database {
-
+	
+	/*
 	private $host = "localhost";
 	private $db_name = "samm";
 	private $db_user = "samm";
 	private $db_password = "5RSuYJNvCHd6VDlV";
-
-	/*
+	*/
+	
 	private $host = "localhost";
 	private $db_name = "catzguy_luc";
 	private $db_user = "samm";
 	private $db_password = "W4uaf3#9";
-	*/	
+		
 	public $conn;
 
 	public function getConnection() {

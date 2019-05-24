@@ -50,5 +50,7 @@ function createTakenItem(taken_id, taken_addiction_name, taken_price, taken_crea
 }
 
 $(document).ready(function () {
+	initMenu()
+	initHeader();
 	getTakens();
 });

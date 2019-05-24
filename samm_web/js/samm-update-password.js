@@ -58,5 +58,7 @@ function bindUpdatePasswordForm() {
 }
 
 $(document).ready(function () {
+	initMenu();
+	initHeader();
 	bindUpdatePasswordForm();
 });
