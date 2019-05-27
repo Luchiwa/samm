@@ -1,15 +1,3 @@
 <?php
-	/*
-	include_once "config/database.php";
-	include_once "object/addiction.php";
-
-	$database = new Database();
-	$db = $database->getConnection();
-
-	$addiction = new Addiction($db);
-
-	$stmt = $addiction->get();
-
-	echo $stmt->rowCount();
-	*/
+	//echo sprintf('%04X%04X-%04X-%04X-%04X-%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
 ?>

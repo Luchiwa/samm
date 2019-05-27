@@ -16,6 +16,22 @@ class User {
 		$this->conn = $db;
 	}
 
+	function get() {
+		$query = "SELECT id, email, username, password, score, creation_date  FROM $this->table_name WHERE id = '$this->id'";
+
+		$stmt = $this->conn->prepare($query);
+
+		$stmt->execute();
+
+		$row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+		$this->id = $row["id"];
+		$this->email = $row["email"];
+		$this->username = $row["username"];
+		$this->score = $row["score"];
+		$this->creation_date = $row["creation_date"];
+	}
+
 	function create() {
 		$query = "INSERT INTO $this->table_name SET id='$this->id', email='$this->email', username='$this->username', password='$this->password', creation_date='$this->creation_date'";
 
