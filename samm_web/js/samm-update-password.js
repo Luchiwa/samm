@@ -60,5 +60,6 @@ function bindUpdatePasswordForm() {
 $(document).ready(function () {
 	initMenu();
 	initHeader();
+	bindMaterialInput();
 	bindUpdatePasswordForm();
 });

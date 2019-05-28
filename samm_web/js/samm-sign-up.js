@@ -46,7 +46,6 @@ function bindSignUpForm() {
 					url : apiBaseUrl + "user/email_exist.php?email=" + encodeURIComponent($(".sign_up_form #sign_up_email").val()),
 					method : "GET",
 					complete : function (jqXHR) {
-						console.log(jqXHR);
 						if (jqXHR.status === 200) {
 							if (jqXHR.responseJSON.email_exist === true) {
 								showInputError($(".sign_up_form #sign_up_email"), "L'adresse email existe déjà");
