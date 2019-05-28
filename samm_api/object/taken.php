@@ -37,6 +37,17 @@ class Taken {
 		return false;
 	}
 
+	function deleteByUser() {
+		$query = "DELETE FROM $this->table_name WHERE user = '$this->user'";
+
+		$stmt = $this->conn->prepare($query);
+
+		if ($stmt->execute()) {
+			return true;
+		}
+		return false;
+	}
+
 }
 
 ?>
