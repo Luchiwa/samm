@@ -28,10 +28,10 @@ $user = new User($db);
 
 $data = json_decode(file_get_contents("php://input"));
 
-if (!empty($data->id)) {
-	$user->id = $data->id;
-	$user->get();
-	if ($user->email == null) {
+if (!empty($data->email)) {
+	$user->email = $data->email;
+	$user->getByEmail();
+	if ($user->id == null) {
 		http_response_code(404);
 		echo json_encode(array("message" => "User not found."));
 	} else {
