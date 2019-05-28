@@ -1,0 +1,29 @@
+.reset_view header {
+	float: left;
+	width: 90vw;
+	height: 45vh;
+	padding: 0 5vw;
+	background-color: #FF0000;
+}
+
+.reset_view header .logo {
+	float: left;
+	height: 20vh;
+	width: 20vh;
+	margin: 5vh calc(45vw - 10vh);
+	background-image: url("../images/racoon_logo_white.svg");
+	background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.reset_view .reset_form {
+	float: left;
+	width: 90vw;
+	margin-left: 5vw;
+	margin-right: 5vw;
+}
+
+.reset_view .reset_form p {
+	color: rgba(0,0,0,0.6);
+	text-align: center;
+}

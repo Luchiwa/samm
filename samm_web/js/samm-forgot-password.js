@@ -26,7 +26,7 @@ function bindForgotPasswordForm() {
 								window.location.href="index.html";
 							});
 						} else {
-							$(".update_password_form p.server_error").text("Serveur indisponible").fadeIn();
+							$(".forgot_password_form p.server_error").text("Serveur indisponible").fadeIn();
 						}
 					}
 				});
@@ -38,5 +38,4 @@ function bindForgotPasswordForm() {
 $(document).ready(function () {
 	bindMaterialInput();
 	bindForgotPasswordForm();
-	console.log("loaded");
 });

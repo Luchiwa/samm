@@ -10,7 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="css/lucky-form.css" />
 	<link rel="stylesheet" type="text/css" href="css/samm.css" />
 	<link rel="stylesheet" type="text/css" href="css/samm-popin.css" />
-	<link rel="stylesheet" type="text/css" href="css/samm-forgot-password.css" />
+	<link rel="stylesheet" type="text/css" href="css/samm-reset.css" />
 	<script type="text/javascript" src="js/jquery-3.4.0.min.js"></script>
 	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
@@ -19,28 +19,23 @@
 	<script type="text/javascript" src="js/lucky-storage.js"></script>
 </head>
 <body>
-	<section class="forgot_password_view view">
+	<section class="reset_view view">
 		<header>
 			<div class="logo"></div>
-			<h1>Mot de passe oublié ?</h1>
-			<p class="instruction">Veuillez saisir votre adresse email.<br/>Un nouveau mot de passe vous sera envoyé sur votre boîte mail.</p>
+			<h1>Êtes-vous sûr de vouloir réinitialiser votre compte ?</h1>			
 		</header>
-		<section class="forgot_password_form">
+		<section class="reset_form">
 			<p class="server_error"></p>
+			<p class="instruction">Ceci entraînera la suppression des succès obtenus et des addictions suivies, cette action est irréversible.<br/>Votre score sera également à 0.</p>			
 			<div class="form_field">
-				<label class="form_field_label" for="forgot_password_email">Email</label>
-				<input maxlength="40" class="form_field_input" type="email" name="forgot_password_email" id="forgot_password_email" />
-				<span class="form_field_error"></span>
+				<button class="btn">Annuler</button>
 			</div>
 			<div class="form_field">
-				<button class="btn disabled">Envoyer</button>
-			</div>
-			<div class="container_backtologin">
-				<a href="index.html" class="a_btn">S'identifier</a>
+				<button class="btn_cancel">Réinitialiser</button>
 			</div>
 		</section>
 	</section>
 	<script type="text/javascript" src="js/samm-popin.js"></script>
-	<script type="text/javascript" src="js/samm-forgot-password.js"></script>
+	<script type="text/javascript" src="js/samm-reset.js"></script>
 </body>
 </html>

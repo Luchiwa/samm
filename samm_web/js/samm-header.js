@@ -13,7 +13,7 @@ var htmlHeaderView = '<header><div class="container_user"><div class="data_usern
 </header>
 */
 
-function getUserAddiction(callback) {
+function getUserAddiction(successCallback, failCallback=false) {
 	console.log("getUserAddiction");
 	$.ajax({
 		url : apiBaseUrl + "user_addiction/get_by_user.php?user=" + getLocalStorage("user.id"),
@@ -21,8 +21,12 @@ function getUserAddiction(callback) {
 		complete : function (jqXHR) {
 			if (jqXHR.status === 200) {
 				setLocalStorageUserAddiction(jqXHR.responseJSON);
-				callback();
-			}			
+				successCallback();
+			} else {
+				if (failCallback) {
+					failCallback();
+				}
+			}
 		}
 	});	
 }
@@ -61,6 +65,8 @@ function initHeader() {
 		if (!getLocalStorage("user_addiction")) {
 			getUserAddiction(function () {
 				setDataHeader();
+			}, function () {
+				window.location.href="choose_addiction.html";
 			});
 		} else {
 			setDataHeader();

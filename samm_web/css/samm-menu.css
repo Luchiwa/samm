@@ -29,7 +29,7 @@ menu.main_menu button.menu_item, menu.main_menu a.menu_item {
     text-transform: uppercase;
     font-size: 4vw;
     text-align: left;
-    padding-left: 15vw;
+    padding-left: 5vw;
     border-bottom: 1px solid #fff;
     box-sizing: border-box;
     text-decoration: none;

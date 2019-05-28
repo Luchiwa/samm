@@ -15,6 +15,7 @@ $db = $database->getConnection();
 $user = new User($db);
 if (isset($_GET["user"])) {
 	$user->id = $_GET["user"];
+	$user->score = 0;
 	$user_success = new UserSuccess($db);
 	$user_success->user = $user->id;
 	$taken = new Taken($db);
@@ -22,7 +23,7 @@ if (isset($_GET["user"])) {
 	$user_addiction = new UserAddiction($db);
 	$user_addiction->user = $user->id;
 
-	if ($user_success->deleteByUser() && $taken->deleteByUser() && $user_addiction->deleteByUser()) {
+	if ($user_success->deleteByUser() && $taken->deleteByUser() && $user_addiction->deleteByUser() && $user->updateScore()) {
 		http_response_code(200);
 		echo json_encode(array("message" => "User was reseted."));
 	} else {
