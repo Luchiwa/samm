@@ -56,6 +56,17 @@ class User {
 		return false;
 	}
 
+	function forgotPassword() {
+		$query = "UPDATE $this->table_name SET password = '$this->password' WHERE id = '$this->id'";
+
+		$stmt = $this->conn->prepare($query);
+
+		if ($stmt->execute()) {
+			return true;
+		}		
+		return false;
+	}
+
 	function updatePassword($old_password) {
 		$passwd_query = "SELECT id FROM $this->table_name WHERE id = '$this->id' AND password = '$old_password'";
 
