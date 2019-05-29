@@ -11,8 +11,8 @@ class Database {
 	
 	private $host = "localhost";
 	private $db_name = "catzguy_luc";
-	private $db_user = "samm";
-	private $db_password = "W4uaf3#9";
+	private $db_user = "luc";
+	private $db_password = "qf0iY!36";
 		
 	public $conn;
 

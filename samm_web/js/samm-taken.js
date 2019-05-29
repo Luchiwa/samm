@@ -6,6 +6,7 @@ function getTakens(callback = null) {
 			$(".taken_view .taken_list").empty();
 			var takens = jqXHR.responseJSON;
 			if (typeof takens.takens !== "undefined") {
+				$(".taken_view .no_takens").remove();
 				takens.takens.forEach(function (taken) {
 					createTakenItem(taken.id, taken.addiction_name, taken.price, taken.creation_date);
 				});

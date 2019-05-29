@@ -18,7 +18,8 @@
 	width: 100%;
 	text-align: center;
 	line-height: 25vh;
-	font-size: 18vh;
+	font-family: arial, sans-serif;
+    font-size: 12vh;
 }
 
 .add_taken_view .add_taken_form {

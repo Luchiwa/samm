@@ -1,13 +1,36 @@
 function bindAddTakenForm() {
-	$(".add_taken_form .slider").slider({
+	if (getLocalStorage("taken.addiction_name") === "tobacco") {
+		$(".add_taken_form .slider").slider({
 		min: 0,
-		max: 50,
+		max: 10,
 		value: 0,
-		slide: function (event, ui) {
-			$(".add_taken_form #add_taken_price").val(ui.value);
-			$(".add_taken_form .price_content").text(ui.value + " €");
-		}
-	});
+			slide: function (event, ui) {
+				$(".add_taken_form #add_taken_price").val(ui.value);
+				if (ui.value === 0) {
+					$(".add_taken_form .price_content").text("Gratuit");
+				} 
+				else {
+					$(".add_taken_form .price_content").text(ui.value + " €");
+				}				
+			}
+		});
+	}
+	if (getLocalStorage("taken.addiction_name") === "alcohol") {
+		$(".add_taken_form .slider").slider({
+			min: 0,
+			max: 50,
+			value: 0,
+				slide: function (event, ui) {
+					$(".add_taken_form #add_taken_price").val(ui.value);
+					if (ui.value === 0) {
+						$(".add_taken_form .price_content").text("Gratuit");
+					} 
+					else {
+					$(".add_taken_form .price_content").text(ui.value + " €");
+					}				
+				}
+		});
+	}	
 	$(".add_taken_form button.btn").bind({
 		"click" : function () {
 			$.ajax({
