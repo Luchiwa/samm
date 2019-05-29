@@ -25,10 +25,14 @@ if (!empty($data->user) && !empty($data->addiction)) {
 	$stmt = $user_success->getByUserAddiction();
 	$num = $stmt->rowCount();
 	$user_score = 0;
+	$valid_success = 0;
 	if ($num > 0) {
 		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 			extract($row);
-			$user_score += $success_point;
+			if ($valid) {
+				$user_score += $success_point;
+				$valid_success++;
+			}			
 		}
 		$user_success->valid = false;
 		$user_success->user = $data->user;
@@ -38,14 +42,19 @@ if (!empty($data->user) && !empty($data->addiction)) {
 		$user->id = $data->user;
 		$user->get();
 		$user->score -= $user_score;
-		if ($user_success->disableValidity() && $user->updateScore()) {
-			http_response_code(200);
-			echo json_encode(array("message" => "User success was invalid.", "score" => $user->score));
-		}
-		else {
-			http_response_code(503);
-			echo json_encode(array("message" => "Unable to disable validity of user success."));
-		}
+		if ($valid_success > 0) {
+			if ($user_success->disableValidity() && $user->updateScore()) {
+				http_response_code(200);
+				echo json_encode(array("message" => "User success was invalid.", "score" => $user->score));
+			}
+			else {
+				http_response_code(503);
+				echo json_encode(array("message" => "Unable to disable validity of user success."));
+			}
+		} else {
+			http_response_code(204);
+			echo json_encode(array("message" => "No user success to invalid."));
+		}		
 	}
 	else {
 		http_response_code(404);
