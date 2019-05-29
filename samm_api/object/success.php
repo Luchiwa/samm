@@ -11,6 +11,7 @@ class Success {
 	public $type;
 	public $start_time;
 	public $end_time;
+	public $point;
 	public $addiction;
 	public $creation_date;
 
@@ -19,7 +20,7 @@ class Success {
 	}
 
 	function getAll() {
-		$query = "SELECT s.id, s.name, s.description, s.type, s.start_time, s.end_time, s.addiction, s.creation_date FROM $this->table_name s ORDER BY s.start_time";
+		$query = "SELECT s.id, s.name, s.description, s.type, s.start_time, s.end_time, s.point, s.addiction, s.creation_date FROM $this->table_name s ORDER BY s.start_time";
 
 		$stmt = $this->conn->prepare($query);
 

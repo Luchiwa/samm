@@ -14,13 +14,14 @@ if (isset($_GET["user"])) {
 	$database = new Database();
 	$db = $database->getConnection();
 
-	$user = new User($db);
-	$user->id = $_GET["user"];
-	$user->get();
+	$user_sync = new User($db);
+	$user_sync->id = $_GET["user"];
+	$user_sync->get();
+	//print_r($user);
 
-	if ($user->email != null) {
+	if ($user_sync->email != null) {
 		$user_addiction = new UserAddiction($db);
-		$user_addiction->user = $user->id;
+		$user_addiction->user = $user_sync->id;
 
 		$stmt = $user_addiction->getByUser();
 		$num = $stmt->rowCount();
@@ -42,8 +43,8 @@ if (isset($_GET["user"])) {
 
  				array_push($user_addiction_arr, $user_addiction_item);
 			}
-
-			$user_id = $_GET["user"];
+			print_r($user);
+			$user_id = $user_sync->id;//$_GET["user"];
 			$success = new Success($db);
  			$stmt = $success->getAll();
 
@@ -62,6 +63,7 @@ if (isset($_GET["user"])) {
  						"type" => $type,
  						"start_time" => $start_time,
  						"end_time" => $end_time,
+ 						"point" => $point,
  						"addiction" => $addiction,
  						"creation_date" => $creation_date
  					);
@@ -70,7 +72,7 @@ if (isset($_GET["user"])) {
  				}
 
  				$user_success = new UserSuccess($db);
- 				$user_success->user = $user_id;
+ 				$user_success->user = $user_sync->id;
 
  				$stmt = $user_success->getByUser();
  				$num = $stmt->rowCount();
@@ -95,15 +97,16 @@ if (isset($_GET["user"])) {
 							"success" => $success,
 							"user" => $user
 						);
-
+	 					print "ok";
 	 					array_push($user_success_simple_arr, $user_success_simple);
 	 					array_push($user_success_arr, $user_success_item);
 	 				}
  				}
-				
-				$user_success_gen_arr = array();
-				$creation_date = date("Y-m-d H:i:s");
 
+				$user_success_gen_arr = array();
+				$user_success_gen_arr["user_success"] = array();
+				$creation_date = date("Y-m-d H:i:s");
+				$user_score = 0;
 				foreach($user_addiction_arr as $user_addiction_item) {
 					
 					$date_now = strtotime(date("Y-m-d H:i:s"));
@@ -116,26 +119,48 @@ if (isset($_GET["user"])) {
 							$user_success = new UserSuccess($db);		
 							$user_success->addiction = $addiction;
 							
-							if (!in_array(array("success" => $success_item["id"], "user" => $user_id), $user_success_simple_arr)) {
+							if (!in_array(array("success" => $success_item["id"], "user" => $user_sync->id), $user_success_simple_arr)) {
 								$user_success->id = sprintf('%04X%04X-%04X-%04X-%04X-%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
 								$user_success->valid = true;
 								$user_success->success = $success_item["id"];
-								$user_success->user = $user_id;
+								$user_success->user = $user_sync->id;
 								$user_success->creation_date = date("Y-m-d H:i:s");
-
+								$user_score = $user_score + $success_item["point"];
 								if ($user_success->create()) {
-									array_push($user_success_gen_arr, $user_success);
+									$user_success_data = array(
+										"id" => $user_success->id,
+										"valid" => true,
+										"success" => $success_item["id"],
+										"user" => $user_sync->id,
+										"creation_date" => $user_success->creation_date,
+										"success_name" => $success_item["name"],
+										"success_description" => $success_item["description"],
+										"success_point" => $success_item["point"],
+										"addiction_name" => $user_addiction_item["addiction_name"]
+									);
+									array_push($user_success_gen_arr["user_success"], $user_success_data);
 								}
 
 							}
-							else {
-								
+							else {								
 								foreach($user_success_arr as $user_success_item) {
 									if (!$user_success_item["valid"]) {
 										$user_success->id = $user_success_item["id"];
 										$user_success->valid = true;
 										if ($user_success->updateValidity()) {
-											array_push($user_success_gen_arr, $user_success);
+											$user_score = $user_score + $success_item["point"];
+											$user_success_data = array(
+												"id" => $user_success_item["id"],
+												"valid" => true,
+												"success" => $success_item["id"],
+												"user" => $user_sync->id,
+												"creation_date" => $user_success["creation_date"],
+												"success_name" => $success_item["name"],
+												"success_description" => $success_item["description"],
+												"success_point" => $success_item["point"],
+												"addiction_name" => $user_addiction_item["addiction_name"]
+											);
+											array_push($user_success_gen_arr["user_success"], $user_success_data);
 										}
 									}
 								}
@@ -144,10 +169,17 @@ if (isset($_GET["user"])) {
 					}
 
 				}
-
-				http_response_code(200);
-				array_push($user_success_gen_arr, array("message" => "Synchronization success."));
-				echo json_encode($user_success_gen_arr);
+				print_r($user_sync);
+				$user_sync->score += $user_score;
+				if ($user_sync->updateScore()) {
+					http_response_code(200);
+					$user_success_gen_arr["score"] = $user_sync->score;
+					echo json_encode($user_success_gen_arr);
+				}
+				else {
+					http_response_code(503);
+					echo json_encode(array("message" => "Unable to update score user. User success was synchronize."));
+				}
 				
  			}
  			else {
