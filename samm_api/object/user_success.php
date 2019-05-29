@@ -28,7 +28,7 @@ class UserSuccess {
 	}
 
 	function getByUserAddiction() {
-		$query = "SELECT us.id, s.name as success_name, s.description as success_description, s.point as success_point, us.valid, us.disability_date, us.success, us.user, us.creation_date FROM $this->table_name us LEFT JOIN success s ON us.success = s.id WHERE us.user = '$this->user' and us.addiction = '$this->addiction'";
+		$query = "SELECT us.id, s.name as success_name, s.description as success_description, s.point as success_point, us.valid, us.disability_date, us.success, us.user, us.creation_date FROM $this->table_name us LEFT JOIN success s ON us.success = s.id WHERE us.user = '$this->user' and us.addiction = '$this->addiction' ORDER BY s.end_time";
 		//echo $query;
 		//exit;
 		$stmt = $this->conn->prepare($query);

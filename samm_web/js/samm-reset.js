@@ -12,6 +12,7 @@ function bindResetView() {
 				complete : function (jqXHR) {
 					if (jqXHR.status === 200) {
 						localStorage.removeItem("user_addiction");
+						localStorage.setItem("user.score", 0);
 						popin("Votre compte a été réinitialisé.", function () {
 							window.location.href="index.html";
 						});

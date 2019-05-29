@@ -17,7 +17,6 @@ if (isset($_GET["user"])) {
 	$user_sync = new User($db);
 	$user_sync->id = $_GET["user"];
 	$user_sync->get();
-	//print_r($user);
 
 	if ($user_sync->email != null) {
 		$user_addiction = new UserAddiction($db);
@@ -43,8 +42,7 @@ if (isset($_GET["user"])) {
 
  				array_push($user_addiction_arr, $user_addiction_item);
 			}
-			print_r($user);
-			$user_id = $user_sync->id;//$_GET["user"];
+
 			$success = new Success($db);
  			$stmt = $success->getAll();
 
@@ -97,7 +95,6 @@ if (isset($_GET["user"])) {
 							"success" => $success,
 							"user" => $user
 						);
-	 					print "ok";
 	 					array_push($user_success_simple_arr, $user_success_simple);
 	 					array_push($user_success_arr, $user_success_item);
 	 				}
@@ -169,11 +166,12 @@ if (isset($_GET["user"])) {
 					}
 
 				}
-				print_r($user_sync);
 				$user_sync->score += $user_score;
 				if ($user_sync->updateScore()) {
 					http_response_code(200);
+					$user_success_gen_arr["user_success"] = array_reverse($user_success_gen_arr["user_success"]);
 					$user_success_gen_arr["score"] = $user_sync->score;
+					$user_success_gen_arr["synchronization_date"] = date("Y-m-d H:i:s");
 					echo json_encode($user_success_gen_arr);
 				}
 				else {

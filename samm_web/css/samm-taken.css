@@ -4,6 +4,13 @@
 	height: 88vh;
 }
 
+.taken_view .no_takens {
+	padding-left: 5vw;
+	padding-right: 5vw;
+	text-align: center;
+	box-sizing: border-box;
+}
+
 .taken_view .taken_list {
 	float: left;
 	width: 100%;

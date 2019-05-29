@@ -1,0 +1,77 @@
+section.success_view {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	background-color: #f4d03f;
+	background-image: linear-gradient(-60deg, #16a085 0%, #f4d03f 100%);
+}
+
+section.success_view header {
+	float: left;
+	width: 100vw;
+	position: relative;
+	background-color: transparent;
+	background-image: url("../images/success_icon.svg");
+	background-repeat: no-repeat;
+	background-position: center 4vh;
+    background-size: 22vh;
+	height: 40vh;
+}
+
+section.success_view header h1 {
+	position: absolute;
+	width: 100vw;
+	bottom: 15px;
+	text-align: center;
+	font-size: 8vw;
+}
+
+section.success_view .addiction {
+	float: left;
+	width: 100vw;
+	height: 15vh;
+}
+
+section.success_view .addiction div {
+	margin-left: auto;
+	margin-right: auto;
+	height: 15vh;
+	width: 15vh;
+	border-radius: 7.5vh;
+	background-size: 8vh auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: 0px 0px 15px 5px rgba(255,255,255,1);
+}
+
+section.success_view .content_success {
+	float: left;
+	width: 100vw;
+	text-align: center;
+	color: #fff;
+	margin-top: 4vh;
+}
+
+section.success_view .content_success .success_point {
+	font-weight: bold;
+}
+
+section.success_view .close_success {
+	float: left;
+	width: 100vw;
+	height: 15vh;
+	margin-top: 5vh;
+}
+
+section.success_view .close_success .close_success_btn {
+	margin-left: calc(50vw - 7.5vh);
+	height: 15vh;
+	width: 15vh;
+	border-radius: 7.5vh;
+	background-color: #4491FF;
+	background-image: url("../images/approve_icon.svg");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 8vh;
+	border: 2px solid #fff;
+}

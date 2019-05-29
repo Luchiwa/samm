@@ -72,8 +72,8 @@ function bindHomeView() {
 	$(".home_view .droppable_container").droppable({
 		accept : ".taken_btn",
 		"drop" : function (event, ui) {
-			localStorage.setItem("taken:addiction_name",ui.draggable.attr("data-name"));
-			localStorage.setItem("taken:addiction_id", ui.draggable.attr("data-id"));
+			localStorage.setItem("taken.addiction_name",ui.draggable.attr("data-name"));
+			localStorage.setItem("taken.addiction_id", ui.draggable.attr("data-id"));
 			window.location.href="add_taken.html";			
 		}
 	});
@@ -105,6 +105,36 @@ function bindHomeView() {
 	});
 }
 
+function synchronizeSuccess() {
+	if (localStorage.getItem("user_success.synchronization_date") ) {
+		console.log("synchronization_date exist");
+		var timeNowSecond = new Date().getTime() / 1000;
+		var timeSyncSecond = new Date(localStorage.getItem("user_success.synchronization_date") + " UTC").getTime() / 1000;
+		if (timeNowSecond < timeSyncSecond + 1200) {
+			return false;
+		}
+	}
+	$.ajax({
+		url : apiBaseUrl + "user_success/synchronization.php?user="+getLocalStorage("user.id"),
+		method : "GET",
+		contentType: "application/json",
+		dataType: "json",
+		complete : function (jqXHR) {
+			console.log(jqXHR);
+			if (jqXHR.status === 200) {
+				var data = jqXHR.responseJSON;
+				data.user_success.forEach(function (success) {
+					initSuccessView(success.success_name, success.addiction_name, success.success_description, success.success_point);
+					//console.log(success);
+				});
+				localStorage.setItem("user_success.synchronization_date", jqXHR.responseJSON.synchronization_date);
+				localStorage.setItem("user.score", jqXHR.responseJSON.score);
+				$("body header .data_userscore").text(getLocalStorage("user.score"));
+			}
+		}
+	});	
+}
+
 function initHomeView(callback) {
 	if ($("body .home_view").length === 0) {
 		$("body").append(htmlHomeView);
@@ -119,4 +149,5 @@ function initHomeView(callback) {
 		bindHomeView();
 	}
 	setScoredTimer();
+	synchronizeSuccess();
 }

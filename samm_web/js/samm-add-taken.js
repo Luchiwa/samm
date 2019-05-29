@@ -17,20 +17,20 @@ function bindAddTakenForm() {
 				dataType: "json",
 				data : JSON.stringify({
 					"price" : $(".add_taken_form #add_taken_price").val(),
-					"addiction" : getLocalStorage("taken:addiction_id"),
+					"addiction" : getLocalStorage("taken.addiction_id"),
 					"user" : getLocalStorage("user.id")
 				}),
 				complete : function (jqXHR) {
 					if (jqXHR.status === 201) {
 						var taken = jqXHR.responseJSON;
-						localStorage.setItem(getLocalStorage("taken:addiction_id") + ":reset_date", taken.creation_date);
+						localStorage.setItem(getLocalStorage("taken.addiction_id") + ":reset_date", taken.creation_date);
 						$.ajax({
 							url : apiBaseUrl + "user_success/disable_validity.php",
 							method : "POST",
 							contentType: "application/json",
 							dataType: "json",
 							data : JSON.stringify({
-								"addiction" : getLocalStorage("taken:addiction_id"),
+								"addiction" : getLocalStorage("taken.addiction_id"),
 								"user" : getLocalStorage("user.id")
 							}),
 							complete: function (jqXHR) {
@@ -63,6 +63,6 @@ function bindAddTakenForm() {
 }
 
 $(document).ready(function () {
-	$(".add_taken_view header").addClass(getLocalStorage("taken:addiction_name"));
+	$(".add_taken_view header").addClass(getLocalStorage("taken.addiction_name"));
 	bindAddTakenForm();
 });
