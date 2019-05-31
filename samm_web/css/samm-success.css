@@ -48,6 +48,10 @@
 	box-sizing: border-box;
 }
 
+.success_list_view .success_list .success_item.invalid_success .success_icon {
+	background-color: transparent;
+}
+
 .success_list_view .success_list .success_item .success_data {
 	float: left;
 	width: calc(76vw - 12vh);
@@ -63,12 +67,22 @@
     font-weight: bold;
 }
 
+.success_list_view .success_list .success_item.invalid_success .success_name {
+	color: rgba(0,0,0,0.7);
+}
+
+
 .success_list_view .success_list .success_item .success_date {
 	float: left;
 	width: 100%;
 	height: 5vh;
 	font-size: 4vw;
 	color: rgba(0,0,0,0.7);
+}
+
+.success_list_view .success_list .success_item.invalid_success .success_date {
+	font-size: 3.5vw;
+	color: #FF0000;
 }
 
 .success_list_view .success_list .success_item .success_point {
@@ -79,6 +93,10 @@
     font-size: 8vw;
     font-weight: bold;
     margin-right: 4vw;
+}
+
+.success_list_view .success_list .success_item.invalid_success .success_point {
+	color:#fff;
 }
 
 /* ONE SUCCESS VIEW */
