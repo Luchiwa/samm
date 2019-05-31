@@ -3,6 +3,8 @@ header {
 	width: 100vw;
 	height: 12vh;
 	text-align: inherit;
+	background-color: #115180;
+	border-bottom: 2px solid #fff;
 }
 
 header .container_user {
@@ -41,6 +43,8 @@ header .container_user .secondary_userdata .list_user_addiction .addiction_icon 
 	background-size: 3vh;
 	background-position: center center;
 	background-repeat: no-repeat;
+	border: 2px solid #fff;
+    box-sizing: border-box;
 }
 
 header .container_user .secondary_userdata .data_userscore {
@@ -64,6 +68,8 @@ header .container_user .secondary_userdata .score_icon {
     background-color: #22CC00;
     margin-top: 1vh;
     margin-left: 1vw;
+    border: 2px solid #fff;
+    box-sizing: border-box;
 }
 
 header button.menu_btn {

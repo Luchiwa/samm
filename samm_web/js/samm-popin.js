@@ -11,10 +11,19 @@ var htmlPopinView = '<div class="overlay"><div class="popin"><div class="contain
 </div>
 */
 
-function popin(message, callback) {
+function createWindowOverlay() {
+	
+}
+
+function confirmWindow() {
+
+}
+
+function popinWindow(message, callback) {
 	if ($(".overlay .popin").length === 0) {
 		$("body").append(htmlPopinView);
 	}
+	//createWindowOverlay();
 	$(".overlay .popin button.btn_popin").unbind("click");
 	$(".overlay .popin .message_popin").text(message);
 	$(".overlay .popin button.btn_popin").bind({

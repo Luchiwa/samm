@@ -151,7 +151,7 @@ if (isset($_GET["user"])) {
 												"valid" => true,
 												"success" => $success_item["id"],
 												"user" => $user_sync->id,
-												"creation_date" => $user_success["creation_date"],
+												"creation_date" => $user_success_item["creation_date"],
 												"success_name" => $success_item["name"],
 												"success_description" => $success_item["description"],
 												"success_point" => $success_item["point"],

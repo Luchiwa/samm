@@ -64,9 +64,11 @@ function bindHomeView() {
 		"revert" : true,
 		"start" : function () {
 			$(".home_view .droppable_container").addClass("ondrag");
+			$(this).addClass("ondrag");
 		},
 		"stop" : function () {
 			$(".home_view .droppable_container").removeClass("ondrag");
+			$(this).removeClass("ondrag");
 		}
 	});
 	$(".home_view .droppable_container").droppable({

@@ -1,79 +1,42 @@
-function getZindexMax() {
-	var index_highest = 0;
-	$("*").each(function() {
-		var index_current = parseInt($(this).css("zIndex"), 10);
-		if (index_current > index_highest) {
-			index_highest = index_current;
-		}
-	});
-	return index_highest;
-}
-
-function createHeader(success_name) {
-	var header =  $("<header>");
-	var title = $("<h1>");
-	title.text(success_name);
-	header.append(title);
-	return header;
-}
-
-function createContentAddiction(addiction_name) {
-	var content_addiction = $("<section>", {
-		class : "addiction"
-	});
-	var addiction_badge = $("<div>", {
-		class : addiction_name
-	});
-	content_addiction.append(addiction_badge);
-	return content_addiction;
-}
-
-function createContentSuccess(success_description, success_point) {
-	var content_success = $("<section>", {
-		class : "content_success"
-	});
-	var p_description = $("<p>", {
-		class : "success_description"
-	});
-	p_description.text(success_description);
-	var p_point = $("<p>", {
-		class : "success_point"
-	});
-	p_point.text("Score augmenté de "+success_point);
-	content_success.append(p_description);
-	content_success.append(p_point);
-	return content_success;
-}
-
-function createButtonCloseSuccess() {
-	var content_button = $("<section>", {
-		class : "close_success"
-	});
-	var button = $("<button>", {
-		class : "close_success_btn"
-	});
-	button.bind({
-		"click" : function () {
-			$(this).parent().parent().fadeOut().remove();
+function getUserSuccess() {
+	var htmlSuccessValidItem = $("#valid_success").html();
+	var htmlSuccessInvalidItem = $("#invalid_success").html();
+	$.ajax({
+		url : apiBaseUrl + "user_success/get_by_user.php?user="+getLocalStorage("user.id"),
+		method : "GET",
+		complete : function (jqXHR) {
+			if (jqXHR.status === 200) {
+				var user_success = jqXHR.responseJSON.user_success;
+				var count = 0;
+				user_success.forEach(function(user_s) {
+					count++;
+					var successItem;
+					if (user_s.valid) {
+						console.log(user_s);
+						successItem = replaceContent(htmlSuccessValidItem, user_s);
+					} else {
+						successItem = replaceContent(htmlSuccessInvalidItem, user_s);
+					}
+					var jqSuccessItem = $(successItem);
+					jqSuccessItem.bind({
+						"click" : function () {
+							initSuccessView(user_s.success_name, user_s.addiction_name, user_s.success_description, user_s.success_point);
+							console.log($(this));
+						}
+					})
+					$(".success_list").append(jqSuccessItem);
+				});
+				if (count > 0) {
+					$("p.no_success").fadeOut().remove();
+				}
+			}
+			
 		}
 	})
-	content_button.append(button);
-
-	return content_button;
 }
 
-function initSuccessView(success_name, addiction_name, success_description, success_point) {
-	var header = createHeader(success_name);
-	var contentAddiction = createContentAddiction(addiction_name);
-	var contentSuccess = createContentSuccess(success_description, success_point);
-	var buttonClose = createButtonCloseSuccess();
-	var success_view = $("<section>", {
-		class : "success_view"
-	});
-	success_view.append(header);
-	success_view.append(contentAddiction);
-	success_view.append(contentSuccess);
-	success_view.append(buttonClose);
-	success_view.css("z-index", getZindexMax()+1);
-	$("body").prepend(success_view);
-}
+$(document).ready(function () {
+	initMenu();
+	initHeader();
+	getUserSuccess();
+});

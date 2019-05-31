@@ -1,7 +1,8 @@
-var htmlMenuView = '<menu class="main_menu"><a href="index.html" class="menu_item">Général</a><a href="taken.html" class="menu_item">Rechutes</a><a href="update_password.html" class="menu_item">Modifier le mot de passe</a><a href="reset.html" class="menu_item">Réinitialiser votre compte</a><button class="logout menu_item">Se déconnecter</button></menu>';
+var htmlMenuView = '<menu class="main_menu"><a href="index.html" class="menu_item">Général</a><a href="success.html" class="menu_item">Succés</a><a href="taken.html" class="menu_item">Rechutes</a><a href="update_password.html" class="menu_item">Modifier le mot de passe</a><a href="reset.html" class="menu_item">Réinitialiser votre compte</a><button class="logout menu_item">Se déconnecter</button></menu>';
 /*
 <menu class="main_menu">
-	<a href="index.html" class="menu_item">Général</a> 
+	<a href="index.html" class="menu_item">Général</a>
+	<a href="success.html" class="menu_item">Succés</a>
 	<a href="taken.html" class="menu_item">Rechutes</a>
 	<a href="update_password.html" class="menu_item">Modifier le mot de passe</a>
 	<a href="reset.html" class="menu_item">Réinitialiser votre compte</a>

@@ -59,18 +59,18 @@ function bindAddTakenForm() {
 							complete: function (jqXHR) {
 								if (jqXHR.status === 200) {
 									localStorage.setItem("user.score", jqXHR.responseJSON.score);
-									popin("C'est dommage, tu étais bien parti, tu as invalidé des succés, ton score est de "+jqXHR.responseJSON.score+". Essayes de faire mieux maintenant.", function () {
+									popinWindow("C'est dommage, tu étais bien parti, tu as invalidé des succés, ton score est de "+jqXHR.responseJSON.score+". Essayes de faire mieux maintenant.", function () {
 										window.location.href="index.html";
 									});
 								} else {
-									popin("C'est dommage, essaies de faire mieux maintenant.", function () {
+									popinWindow("C'est dommage, essaies de faire mieux maintenant.", function () {
 										window.location.href="index.html";
 									});
 								}								
 							}
 						});						
 					} else {
-						popin("Service indisponible", function () {
+						popinWindow("Service indisponible", function () {
 							window.location.href="index.html";
 						});
 					}

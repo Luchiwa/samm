@@ -12,8 +12,6 @@
 	<link rel="stylesheet" type="text/css" href="css/samm-menu.css" />
 	<link rel="stylesheet" type="text/css" href="css/samm-header.css" />
 	<link rel="stylesheet" type="text/css" href="css/samm-success.css" />
-	<link rel="stylesheet" type="text/css" href="css/samm-home.css" />
-	<link rel="stylesheet" type="text/css" href="css/samm-login.css" />
 	<script type="text/javascript" src="js/jquery-3.4.0.min.js"></script>
 	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
@@ -22,28 +20,30 @@
 	<script type="text/javascript" src="js/lucky-storage.js"></script>
 </head>
 <body>
+	<section class="success_list_view view">
+		<p class="no_success">Vous n'avez pas encore remporté de succés.</p>
+		<section class="success_list"></section>
+	</section>
+	<template id="invalid_success">
+		<div class="invalid_success success_item">
+			<div class="success_icon {addiction_name}"></div>
+			<div class="success_name">{success_name}</div>
+			<div class="success_date">{creation_date}</div>
+		</div>
+	</template>
+	<template id="valid_success">
+		<div class="valid_success success_item">
+			<div class="success_icon {addiction_name}"></div>
+			<div class="success_data">
+				<div class="success_name">{success_name}</div>
+				<div class="success_date">{creation_date}</div>
+			</div>
+			<div class="success_point">+ {success_point}</div>		
+		</div>
+	</template>
 	<script type="text/javascript" src="js/samm-menu.js"></script>
-	<script type="text/javascript" src="js/samm-header.js"></script>
+	<script type="text/javascript" src="js/samm-header.js"></script>	
+	<script type="text/javascript" src="js/samm-success.js"></script>
 	<script type="text/javascript" src="js/samm-success-win.js"></script>
-	<script type="text/javascript" src="js/samm-home.js"></script>
-	<script type="text/javascript" src="js/samm-login.js"></script>
-	<script type="text/javascript" src="js/samm-index.js"></script>
-	<script type="text/javascript">
-		// This is the "Offline page" service worker
-		// Add this below content to your HTML page, or add the js file to your page at the very top to register service worker
-		// Check compatibility for the browser we're running this in
-		if ("serviceWorker" in navigator) {
-  			if (navigator.serviceWorker.controller) {
-    			console.log("[PWA Builder] active service worker found, no need to register");
-  			} else {
-    			// Register the service worker
-    			navigator.serviceWorker.register("pwabuilder-sw.js", {
-    				scope: "./"
-    			}).then(function (reg) {
-    				console.log("[PWA Builder] Service worker has been registered for scope: " + reg.scope);
-      			});
-  			}
-		}
-	</script>
 </body>
 </html>

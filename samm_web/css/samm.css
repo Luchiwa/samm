@@ -7,9 +7,7 @@ body {
 }
 
 p {
-	float: left;
-	width: 100%;
-	margin: 1vh 0;
+	margin: 1vh 1vw;
 }
 
 p.server_error {
@@ -52,12 +50,12 @@ header {
 
 .tobacco {
 	background-image: url("../images/tobacco_icon.svg");
-	background-color: #F07718;
+	background-color: #ff9900;
 }
 
 .alcohol {
 	background-image: url("../images/alcohol_icon.svg");
-	background-color: #F0D528;
+	background-color: #ffdd00;
 }
 
 .view {

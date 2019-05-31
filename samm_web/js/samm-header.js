@@ -14,7 +14,6 @@ var htmlHeaderView = '<header><div class="container_user"><div class="data_usern
 */
 
 function getUserAddiction(successCallback, failCallback=false) {
-	console.log("getUserAddiction");
 	$.ajax({
 		url : apiBaseUrl + "user_addiction/get_by_user.php?user=" + getLocalStorage("user.id"),
 		method : "GET",

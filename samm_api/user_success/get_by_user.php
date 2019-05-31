@@ -16,7 +16,7 @@ if (isset($_GET["user"])) {
 	$stmt = $user_success->getByUSer();
 	$num = $stmt->rowCount();
 	
-	if ($num > O) {
+	if ($num > 0) {
 		$user_success_arr = array();
 		$user_success_arr["user_success"] = array();
 
@@ -26,6 +26,8 @@ if (isset($_GET["user"])) {
 				"id" => $id,
 				"success_name" => $success_name,
 				"success_description" => $success_description,
+				"success_point" => $success_point,
+				"addiction_name" => $addiction_name,
 				"valid" => $valid,
 				"disability_date" => $disability_date,
 				"success" => $success,

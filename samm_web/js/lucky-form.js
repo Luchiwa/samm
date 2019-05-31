@@ -46,3 +46,18 @@ function numberToString(number) {
 	}
 	return number;
 }
+
+function localStringDate(date) {
+	date = new Date(date + " UTC");
+	return date.getFullYear()+"-"+numberToString(date.getMonth()+1)+"-"+numberToString(date.getDate())+" "+numberToString(date.getHours())+":"+numberToString(date.getMinutes())+":"+numberToString(date.getSeconds());
+}
+
+function replaceContent(contentString, data) {
+	//format must be "{data[name]}"
+ 	for (var name in data) {
+ 		if (data.hasOwnProperty(name)) {
+ 			contentString = contentString.replace('{' + name + '}', data[name]);
+        }
+    }
+    return contentString;
+}

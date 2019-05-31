@@ -35,7 +35,6 @@ function setLocalStorageUser(user) {
 }
 
 function setLocalStorageUserAddiction(user_addictions) {
-	console.log("setLocalStorageUserAddiction");
 	localStorage.setItem("user_addiction", JSON.stringify(user_addictions));
 	user_addictions.user_addictions.forEach(function(user_addiction) {
 		localStorage.setItem(user_addiction.addiction+":reset_date", user_addiction.reset_date);
