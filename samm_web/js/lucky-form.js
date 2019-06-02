@@ -73,5 +73,8 @@ function replaceContent(contentString, data) {
  			contentString = contentString.replace('{' + name + '}', data[name]);
         }
     }
+    if (contentString.indexOf("{") !== -1) {
+    	contentString = replaceContent(contentString, data);
+    }
     return contentString;
 }

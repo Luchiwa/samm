@@ -1,12 +1,3 @@
-var htmlHomeView = '<section class="home_view view"><p>Glisser-déposer en cas de rechute</p><div class="taken_addiction_container"></div><div class="droppable_container"></div></section>';
-/*
-<section class="home_view">
-	<p>Glisser-déposer en cas de rechute</p>
-	<div class="taken_addiction_container"></div>
-	<div class="droppable_container"></div>
-</section>
-*/
-
 var timerInterval;
 var scoreInterval;
 
@@ -28,27 +19,17 @@ function setScoredTimer() {
 
 function setAddictionHome() {
 	var user_addictions = JSON.parse(getLocalStorage("user_addiction")).user_addictions;
-
 	if (user_addictions.length < 2) {
 		$(".home_view .taken_addiction_container").addClass("one");
 	} else {
 		$(".home_view .taken_addiction_container").addClass("two");
 	}
-
+	var tmplDraggableUserAddiction = $("#draggable_user_addiction").html();
 	user_addictions.forEach(function(user_addiction) {
-		var draggableAddiction = $("<div>", {
-			"class" : "taken_btn "+user_addiction.addiction_name,
-			"data-id" : user_addiction.addiction,
-			"data-name" : user_addiction.addiction_name
-		});
-		var resetTimeAddiction = $("<div>", {
-			"class" : "timer_addiction"
-		});
-	
-		draggableAddiction.append(resetTimeAddiction.text(setAddictionTimer(getLocalStorage(user_addiction.addiction+":reset_date"))));
-	
+		var draggableAddiction = $(replaceContent(tmplDraggableUserAddiction, user_addiction));
+		draggableAddiction.find(".timer_addiction").text(setAddictionTimer(getLocalStorage(user_addiction.addiction+":reset_date")));
 		timerInterval = setInterval(function () {
-			resetTimeAddiction.text(setAddictionTimer(getLocalStorage(user_addiction.addiction+":reset_date")));
+			draggableAddiction.find(".timer_addiction").text(setAddictionTimer(getLocalStorage(user_addiction.addiction+":reset_date")));
 		}, 1000);
 		$(".home_view .taken_addiction_container").append(draggableAddiction);
 	});	
@@ -82,7 +63,6 @@ function bindHomeView() {
 	$(".home_view .droppable_container").bind({
 		"click" : function () {
 			if ($(this).hasClass("scored")) {
-				//TO DO : Update score user
 				$.ajax({
 					url : apiBaseUrl + "user/update_score.php",
 					method : "POST",
@@ -109,9 +89,8 @@ function bindHomeView() {
 
 function synchronizeSuccess() {
 	if (localStorage.getItem("user_success.synchronization_date") ) {
-		console.log("synchronization_date exist");
 		var timeNowSecond = new Date().getTime() / 1000;
-		var timeSyncSecond = new Date(localStorage.getItem("user_success.synchronization_date") + " UTC").getTime() / 1000;
+		var timeSyncSecond = new Date(toStandardFormat(localStorage.getItem("user_success.synchronization_date"))).getTime() / 1000;
 		if (timeNowSecond < timeSyncSecond + 1200) {
 			return false;
 		}
@@ -122,12 +101,10 @@ function synchronizeSuccess() {
 		contentType: "application/json",
 		dataType: "json",
 		complete : function (jqXHR) {
-			console.log(jqXHR);
 			if (jqXHR.status === 200) {
 				var data = jqXHR.responseJSON;
 				data.user_success.forEach(function (success) {
 					initSuccessView(success.success_name, success.addiction_name, success.success_description, success.success_point);
-					//console.log(success);
 				});
 				localStorage.setItem("user_success.synchronization_date", jqXHR.responseJSON.synchronization_date);
 				localStorage.setItem("user.score", jqXHR.responseJSON.score);
@@ -139,7 +116,7 @@ function synchronizeSuccess() {
 
 function initHomeView(callback) {
 	if ($("body .home_view").length === 0) {
-		$("body").append(htmlHomeView);
+		$("body").append($("#home_view").html());
 	}
 	if (!getLocalStorage("user_addiction")) {
 		getUserAddiction(function () {

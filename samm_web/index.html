@@ -23,6 +23,18 @@
 	<script type="text/javascript" src="js/lucky-storage.js"></script>
 </head>
 <body>
+	<template id="home_view">
+		<section class="home_view">
+			<p>Glisser-déposer en cas de rechute</p>
+			<div class="taken_addiction_container"></div>
+			<div class="droppable_container"></div>
+		</section>
+	</template>
+	<template id="draggable_user_addiction">
+		<div data-name="{addiction_name}" data-id="{addiction}" class="taken_btn {addiction_name}">
+			<div class="timer_addiction"></div>
+		</div>
+	</template>
 	<template id="login_view">
 		<section class="login_view">
 			<header>
