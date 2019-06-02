@@ -44,11 +44,11 @@ function bindUpdatePasswordForm() {
 					}),
 					complete : function (jqXHR) {
 						if (jqXHR.status === 200) {
-							popin("Le mot de passe a été mis à jour.", function () {
+							displayInformationWindow("updated_password", function () {
 								window.location.href="index.html";
-							});											
+							});									
 						} else {
-							$(".update_password_form p.server_error").text("Serveur indisponible").fadeIn();
+							displayInformationWindow("server_error");
 						}
 					}
 				});

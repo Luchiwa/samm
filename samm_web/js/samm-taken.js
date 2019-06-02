@@ -9,8 +9,9 @@ function getTakens(callback = null) {
 			if (typeof takens.takens !== "undefined") {
 				$(".taken_view .no_takens").remove();
 				takens.takens.forEach(function (taken) {
-					htmlTakenItem = replaceContent(htmlTakenItem, taken);
-					$(".taken_list").append(htmlTakenItem);
+					taken.creation_date = displayCustomDate(taken.creation_date);
+					var inHtmlTakenItem = replaceContent(htmlTakenItem, taken);
+					$(".taken_list").append(inHtmlTakenItem);
 					//createTakenItem(taken.id, taken.addiction_name, taken.price, taken.creation_date);
 				});
 			}

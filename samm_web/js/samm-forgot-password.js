@@ -22,14 +22,18 @@ function bindForgotPasswordForm() {
 					}),
 					complete: function (jqXHR) {
 						if (jqXHR.status === 200) {
-							popinWindow("Un email contenant votre nouveau mot de passe vous a été envoyé.", function () {
-								window.location.href="index.html";
+							displayInformationWindow("password_updated", function () {
+								$(".window .btn").bind({
+									"click" : function () {
+										window.location.href="index.html";
+									}
+								});
 							});
 						}
 						if (jqXHR.status === 404) {
-							$(".forgot_password_form p.server_error").text("L'adresse email n'existe pas.").fadeIn();	
+							displayInformationWindow("email_not_exist");
 						} else {
-							$(".forgot_password_form p.server_error").text("Serveur indisponible").fadeIn();
+							displayInformationWindow("server_error");
 						}
 					}
 				});

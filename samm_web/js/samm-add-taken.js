@@ -58,20 +58,33 @@ function bindAddTakenForm() {
 							}),
 							complete: function (jqXHR) {
 								if (jqXHR.status === 200) {
-									localStorage.setItem("user.score", jqXHR.responseJSON.score);
-									popinWindow("C'est dommage, tu étais bien parti, tu as invalidé des succés, ton score est de "+jqXHR.responseJSON.score+". Essayes de faire mieux maintenant.", function () {
-										window.location.href="index.html";
-									});
+									var data = jqXHR.responseJSON;
+									localStorage.setItem("user.score", data.score);
+									displayInformationWindow("score_modification", function () {
+										$(".window .btn").bind({
+											"click" : function () {
+												window.location.href="index.html";
+											}
+										});
+									}, data);
 								} else {
-									popinWindow("C'est dommage, essaies de faire mieux maintenant.", function () {
-										window.location.href="index.html";
+									displayInformationWindow("fail_message", function () {
+										$(".window .btn").bind({
+											"click" : function () {
+												window.location.href="index.html";
+											}
+										});
 									});
 								}								
 							}
 						});						
 					} else {
-						popinWindow("Service indisponible", function () {
-							window.location.href="index.html";
+						displayInformationWindow("server_error", function () {
+							$(".window .btn").bind({
+								"click" : function () {
+									window.location.href="index.html";
+								}
+							});
 						});
 					}
 				}

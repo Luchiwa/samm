@@ -7,6 +7,47 @@
 	display: none;
 }
 
+.window {
+	position: fixed;
+	z-index: 3;
+	top: 10vh;
+	left: 10vw;
+	margin-right: 10vw;
+	max-height: 80vh;
+	width: 80vw;
+	background-color: #fff;
+	box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
+	display: none;
+}
+
+.window .header_window {
+	min-height: 20vh;
+	background-image: url("../images/racoon_logo_white.svg");
+	background-position: center 2vh;
+	background-size: 7vh;
+	background-repeat: no-repeat;
+	padding-top: 10vh;
+	background-color: #115180;
+}
+
+.window .header_window h1 {
+	text-align: center;
+	padding-left: 5vw;
+	padding-right: 5vw;
+	box-sizing: border-box;
+}
+
+.window .content_window {
+	float: left;
+	width: 90%;
+	margin: 5%;
+	color: rgba(0,0,0,0.7);
+}
+
+.window .content_window p {
+	text-align: center;
+}
+
 .overlay .popin {
 	position: fixed;
 	z-index: 3;

@@ -9,8 +9,8 @@ function getUserSuccess() {
 				var user_success = jqXHR.responseJSON.user_success;
 				var count = 0;
 				user_success.forEach(function(user_s) {
-					user_s.creation_date = localStringDate(user_s.creation_date);
-					user_s.disability_date = localStringDate(user_s.disability_date);
+					user_s.creation_date = displayCustomDate(user_s.creation_date);
+					user_s.disability_date = displayCustomDate(user_s.disability_date);
 					count++;
 					var successItem;
 					console.log(user_s);
@@ -24,7 +24,6 @@ function getUserSuccess() {
 						jqSuccessItem.bind({
 							"click" : function () {
 								initSuccessView(user_s.success_name, user_s.addiction_name, user_s.success_description, user_s.success_point);
-								console.log($(this));
 							}
 						});
 					}

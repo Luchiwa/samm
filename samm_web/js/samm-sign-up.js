@@ -67,13 +67,13 @@ function bindSignUpForm() {
 											setLocalStorageUser(jqXHR.responseJSON);
 											window.location.href="choose_addiction.html";											
 										} else {
-											$(".sign_up_form p.server_error").text(jqXHR.responseJSON.message).fadeIn();
+											displayInformationWindow("server_error");
 										}
 									}
 								});
 							}
 						} else {
-							$(".sign_up_form p.server_error").text("Serveur indisponible").fadeIn();
+							displayInformationWindow("server_error");
 						}
 					}
 				});				

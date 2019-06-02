@@ -19,7 +19,10 @@ function bindMainViewMenu() {
 	$(".main_menu button.menu_item").bind({
 		"click" : function () {
 			if ($(this).hasClass("logout")) {
-				logOut();
+				//logOut();
+				displayConfirmWindow("Êtes-vous sûr de vouloir vous déconnecter ?", function () {
+					logOut();
+				});
 			}
 			$(this).parent().removeClass("active");
 		}

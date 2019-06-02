@@ -16,7 +16,7 @@ class Taken {
 	}
 
 	function getByUser() {
-		$query = "SELECT t.id as id, t.creation_date as creation_date, t.price as price, a.name as addiction_name FROM $this->table_name t LEFT JOIN addiction a ON t.addiction = a.id WHERE t.user = '$this->user' ORDER BY t.creation_date";
+		$query = "SELECT t.id as id, t.creation_date as creation_date, t.price as price, a.name as addiction_name FROM $this->table_name t LEFT JOIN addiction a ON t.addiction = a.id WHERE t.user = '$this->user' ORDER BY t.creation_date DESC";
 
 		$stmt = $this->conn->prepare($query);
 

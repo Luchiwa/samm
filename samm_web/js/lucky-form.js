@@ -48,8 +48,22 @@ function numberToString(number) {
 }
 
 function localStringDate(date) {
-	date = new Date(date + " UTC");
+	date = new Date(toStandardFormat(date));
 	return date.getFullYear()+"-"+numberToString(date.getMonth()+1)+"-"+numberToString(date.getDate())+" "+numberToString(date.getHours())+":"+numberToString(date.getMinutes())+":"+numberToString(date.getSeconds());
+}
+
+function displayCustomDate(date) {
+	var frenchDay = ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
+	var frenchMonth = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
+	date = new Date(toStandardFormat(date));
+	return frenchDay[date.getDay()]+" "+date.getDate()+" "+frenchMonth[date.getMonth()]+ " "+numberToString(date.getHours()) + ":"+numberToString(date.getMinutes());
+}
+
+function toStandardFormat(date) {
+	var splitDate = date.split(" ");
+	var splitYmdDate = splitDate[0].split("-");
+	var splitHisDate = splitDate[1].split(":");
+	return splitYmdDate[0]+"-"+splitYmdDate[1]+"-"+splitYmdDate[2]+"T"+splitDate[1]+"Z";
 }
 
 function replaceContent(contentString, data) {

@@ -13,11 +13,15 @@ function bindResetView() {
 					if (jqXHR.status === 200) {
 						localStorage.removeItem("user_addiction");
 						localStorage.setItem("user.score", 0);
-						popinWindow("Votre compte a été réinitialisé.", function () {
-							window.location.href="index.html";
+						displayInformationWindow("account_reseted", function () {
+							$(".window .btn").bind({
+								"click" : function () {
+									window.location.href="index.html";
+								}
+							});							
 						});
 					} else {
-						$(".forgot_password_form p.server_error").text("Serveur indisponible").fadeIn();
+						displayInformationWindow("server_error");
 					}
 				}
 			});
@@ -27,5 +31,4 @@ function bindResetView() {
 
 $(document).ready(function () {
 	bindResetView();
-	console.log("loaded");
 });

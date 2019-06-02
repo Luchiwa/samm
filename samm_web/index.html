@@ -14,6 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="css/samm-success.css" />
 	<link rel="stylesheet" type="text/css" href="css/samm-home.css" />
 	<link rel="stylesheet" type="text/css" href="css/samm-login.css" />
+	<link rel="stylesheet" type="text/css" href="css/samm-window.css" />
 	<script type="text/javascript" src="js/jquery-3.4.0.min.js"></script>
 	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
@@ -22,6 +23,48 @@
 	<script type="text/javascript" src="js/lucky-storage.js"></script>
 </head>
 <body>
+	<template id="login_view">
+		<section class="login_view">
+			<header>
+				<div class="logo"></div>
+				<div class="name">SAMM</div>
+			</header>
+			<section class="login_form">
+				<div class="form_field">
+					<label class="form_field_label" for="login_email">Email</label>
+					<input maxlength="40" class="form_field_input" type="email" name="login_email" id="login_email" />
+					<span class="form_field_error"></span>
+				</div>
+				<div class="form_field">
+					<label class="form_field_label" for="login_password">Mot de passe</label>
+					<input class="form_field_input" type="password" name="password" id="login_password" />
+					<span class="form_field_error"></span>
+				</div>
+				<div class="container_forgot_password">
+					<a href="forgot_password.html" class="a_btn">Mot de passe oublié ?</a>
+				</div>
+				<div class="form_field">
+					<button class="btn disabled">Se connecter</button>
+				</div>
+				<div class="container_sign_up">
+					<p>Vous n'avez pas encore de compte ?</p>
+					<a href="sign_up.html" class="a_btn">S'inscrire</a>
+				</div>
+			</section>
+		</section>
+	</template>
+	<template id="server_error">
+		<header class="header_window">
+			<h1>Désolé :(</h1>
+		</header>
+		<div class="content_window">
+			<p>Vos identifiants sont invalides.<br/>Veuillez tenter de nouveau.</p>
+			<div class="form_field">
+				<button class="btn">OK</button>
+			</div>
+		</div>
+	</template>
+	<script type="text/javascript" src="js/samm-window.js"></script>
 	<script type="text/javascript" src="js/samm-menu.js"></script>
 	<script type="text/javascript" src="js/samm-header.js"></script>
 	<script type="text/javascript" src="js/samm-success-win.js"></script>

@@ -43,7 +43,7 @@ function bindChooseAddictionForm() {
 										window.location.href="index.html";						
 									}
 								} else {
-									$(".choose_addiction_form p.server_error").text(jqXHR.responseJSON.message).fadeIn();
+									displayInformationWindow("server_error");
 								}								
 							}
 						});

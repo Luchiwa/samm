@@ -9,7 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="css/jquery-ui.structure.css" />
 	<link rel="stylesheet" type="text/css" href="css/lucky-form.css" />
 	<link rel="stylesheet" type="text/css" href="css/samm.css" />
-	<link rel="stylesheet" type="text/css" href="css/samm-popin.css" />
+	<link rel="stylesheet" type="text/css" href="css/samm-window.css" />
 	<link rel="stylesheet" type="text/css" href="css/samm-add-taken.css" />
 	<script type="text/javascript" src="js/jquery-3.4.0.min.js"></script>
 	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
@@ -35,7 +35,42 @@
 			</div>
 		</section>			
 	</section>
-	<script type="text/javascript" src="js/samm-popin.js"></script>
+	<template id="score_modification">
+		<header class="header_window">
+			<h1>Dommage :(</h1>
+		</header>
+		<div class="content_window">
+			<p>Tu as invalidé les succés obtenus.</p>
+			<p>Votre score : {score}</p>
+			<p>Essaie de faire mieux maintenant !</p>
+			<div class="form_field">
+				<button class="btn">Compris</button>
+			</div>
+		</div>
+	</template>
+	<template id="fail_message">
+		<header class="header_window">
+			<h1>Dommage :(</h1>
+		</header>
+		<div class="content_window">
+			<p>Essaie de faire mieux maintenant !</p>
+			<div class="form_field">
+				<button class="btn">Compris</button>
+			</div>
+		</div>		
+	</template>
+	<template id="server_error">
+		<header class="header_window">
+			<h1>Désolé :(</h1>
+		</header>
+		<div class="content_window">
+			<p>Un problème est survenu. Impossible de joindre la base de données.</p>
+			<div class="form_field">
+				<button class="btn">OK</button>
+			</div>
+		</div>
+	</template>
+	<script type="text/javascript" src="js/samm-window.js"></script>
 	<script type="text/javascript" src="js/samm-add-taken.js"></script>
 </body>
 </html>

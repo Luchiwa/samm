@@ -12,7 +12,7 @@ var scoreInterval;
 
 function setAddictionTimer(date) {
 	var nbSecondNow = parseInt(new Date().getTime() / 1000);
-	var nbSecondReset = parseInt(new Date(date + " UTC").getTime() / 1000);
+	var nbSecondReset = parseInt(new Date(toStandardFormat(date)).getTime() / 1000);
 	var allSecondSinceReset = nbSecondNow - nbSecondReset;
 	var hourSinceReset = Math.floor(allSecondSinceReset / 3600);
 	var minuteSinceReset = Math.floor((allSecondSinceReset % 3600)/60);
