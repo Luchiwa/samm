@@ -11,9 +11,9 @@ function getUserSuccess() {
 				user_success.forEach(function(user_s) {
 					user_s.creation_date = displayCustomDate(user_s.creation_date);
 					user_s.disability_date = displayCustomDate(user_s.disability_date);
+					user_s.updated_date = displayCustomDate(user_s.updated_date);
 					count++;
 					var successItem;
-					console.log(user_s);
 					if (user_s.valid === "1") {						
 						successItem = replaceContent(htmlSuccessValidItem, user_s);
 					} else {

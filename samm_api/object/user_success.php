@@ -12,13 +12,14 @@ class UserSuccess {
 	public $user;
 	public $addiction;
 	public $creation_date;
+	public $updated_date;
 
 	public function __construct($db) {
 		$this->conn = $db;
 	}
 
 	function getByUser() {
-		$query = "SELECT us.id, s.name as success_name, a.name as addiction_name, s.description as success_description, s.point as success_point, us.valid, us.disability_date, us.success, us.user, us.creation_date FROM $this->table_name us LEFT JOIN success s ON us.success = s.id LEFT JOIN addiction a ON us.addiction = a.id WHERE us.user = '$this->user'";
+		$query = "SELECT us.id, s.name as success_name, a.name as addiction_name, s.description as success_description, s.point as success_point, us.valid, us.disability_date, us.success, us.user, us.creation_date, us.updated_date FROM $this->table_name us LEFT JOIN success s ON us.success = s.id LEFT JOIN addiction a ON us.addiction = a.id WHERE us.user = '$this->user'";
 
 		$stmt = $this->conn->prepare($query);
 
@@ -28,7 +29,7 @@ class UserSuccess {
 	}
 
 	function getByUserAddiction() {
-		$query = "SELECT us.id, s.name as success_name, s.description as success_description, s.point as success_point, us.valid, us.disability_date, us.success, us.user, us.creation_date FROM $this->table_name us LEFT JOIN success s ON us.success = s.id WHERE us.user = '$this->user' and us.addiction = '$this->addiction' ORDER BY s.end_time";
+		$query = "SELECT us.id, s.name as success_name, s.description as success_description, s.point as success_point, us.valid, us.disability_date, us.success, us.user, us.creation_date, us.updated_date FROM $this->table_name us LEFT JOIN success s ON us.success = s.id WHERE us.user = '$this->user' and us.addiction = '$this->addiction' ORDER BY s.end_time";
 
 		$stmt = $this->conn->prepare($query);
 
@@ -38,7 +39,7 @@ class UserSuccess {
 	}
 
 	function create() {
-		$query = "INSERT INTO $this->table_name SET id='$this->id', valid='$this->valid', success='$this->success', user='$this->user', addiction = '$this->addiction', creation_date='$this->creation_date'";
+		$query = "INSERT INTO $this->table_name SET id='$this->id', valid='$this->valid', success='$this->success', user='$this->user', addiction = '$this->addiction', creation_date='$this->creation_date', updated_date='$this->updated_date'";
 		
 		$stmt = $this->conn->prepare($query);
 
@@ -50,7 +51,7 @@ class UserSuccess {
 	}
 
 	function updateValidity() {
-		$query = "UPDATE $this->table_name SET valid = '$this->valid' WHERE id = '$this->id'";
+		$query = "UPDATE $this->table_name SET valid = '$this->valid', updated_date = '$this->updated_date' WHERE id = '$this->id'";
 
 		$stmt = $this->conn->prepare($query);
 
@@ -62,7 +63,7 @@ class UserSuccess {
 	}
 
 	function disableValidity() {
-		$query ="UPDATE $this->table_name SET valid = '$this->valid', disability_date = '$this->disability_date' WHERE user = '$this->user' AND addiction = '$this->addiction'";
+		$query ="UPDATE $this->table_name SET valid = '$this->valid', disability_date = '$this->disability_date', updated_date = '$this->updated_date' WHERE user = '$this->user' AND addiction = '$this->addiction'";
 
 		 $stmt = $this->conn->prepare($query);
 

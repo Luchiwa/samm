@@ -32,7 +32,8 @@ if (isset($_GET["user"])) {
 				"disability_date" => $disability_date,
 				"success" => $success,
 				"user" => $user,
-				"creation_date" => $creation_date
+				"creation_date" => $creation_date,
+				"updated_date" => $updated_date
 			);
 
 			array_push($user_success_arr["user_success"], $user_success_item);

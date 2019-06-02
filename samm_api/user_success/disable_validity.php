@@ -38,6 +38,7 @@ if (!empty($data->user) && !empty($data->addiction)) {
 		$user_success->user = $data->user;
 		$user_success->addiction = $data->addiction;
 		$user_success->disability_date = date("Y-m-d H:i:s");
+		$user_success->updated_date = $user_success->disability_date;
 		$user = new User($db);
 		$user->id = $data->user;
 		$user->get();

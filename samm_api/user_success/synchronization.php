@@ -122,6 +122,7 @@ if (isset($_GET["user"])) {
 								$user_success->success = $success_item["id"];
 								$user_success->user = $user_sync->id;
 								$user_success->creation_date = date("Y-m-d H:i:s");
+								$user_success->updated_date = $user_success->creation_date;
 								$user_score = $user_score + $success_item["point"];
 								if ($user_success->create()) {
 									$user_success_data = array(
@@ -130,6 +131,7 @@ if (isset($_GET["user"])) {
 										"success" => $success_item["id"],
 										"user" => $user_sync->id,
 										"creation_date" => $user_success->creation_date,
+										"updated_date" => $user_success->creation_date,
 										"success_name" => $success_item["name"],
 										"success_description" => $success_item["description"],
 										"success_point" => $success_item["point"],
@@ -144,6 +146,7 @@ if (isset($_GET["user"])) {
 									if (!$user_success_item["valid"]) {
 										$user_success->id = $user_success_item["id"];
 										$user_success->valid = true;
+										$user_success->updated_date =  date("Y-m-d H:i:s");
 										if ($user_success->updateValidity()) {
 											$user_score = $user_score + $success_item["point"];
 											$user_success_data = array(
@@ -152,6 +155,7 @@ if (isset($_GET["user"])) {
 												"success" => $success_item["id"],
 												"user" => $user_sync->id,
 												"creation_date" => $user_success_item["creation_date"],
+												"updated_date" => $user_success->updated_date,
 												"success_name" => $success_item["name"],
 												"success_description" => $success_item["description"],
 												"success_point" => $success_item["point"],
