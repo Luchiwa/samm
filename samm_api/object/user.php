@@ -129,6 +129,17 @@ class User {
 		$this->creation_date = $row["creation_date"];
 	}
 
+	function delete() {
+		$query = "DELETE FROM $this->table_name WHERE id = '$this->id'";
+
+		$stmt = $this->conn->prepare($query);
+
+		if ($stmt->execute()) {
+			return true;
+		}
+		return false;
+	}
+
 }
 
 ?>

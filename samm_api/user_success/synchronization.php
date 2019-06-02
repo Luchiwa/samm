@@ -47,7 +47,6 @@ if (isset($_GET["user"])) {
  			$stmt = $success->getAll();
 
  			$num = $stmt->rowCount();
-
  			if ($num > 0) {
  				$success_arr = array();
 
